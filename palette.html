@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Color Palette Generator — ColorPick</title>
+  <meta name="description" content="Generate color palettes instantly. Complementary, analogous, triadic, and split-complementary color schemes from any base color.">
+  <meta name="keywords" content="color palette generator, complementary colors, analogous colors, triadic colors">
+  <link rel="stylesheet" href="style.css">
+  <script src="colorpick.js"></script>
+  <style>
+    .input-row { display: flex; gap: 1rem; align-items: center; justify-content: center; margin: 2rem 0; flex-wrap: wrap; }
+    .scheme { margin-bottom: 2.5rem; }
+    .scheme h3 { text-align: center; margin-bottom: 1rem; color: var(--text2); font-size: 1rem; text-transform: uppercase; letter-spacing: 2px; }
+    .scheme-colors { display: flex; gap: 0.5rem; justify-content: center; flex-wrap: wrap; }
+    .scheme-swatch {
+      width: 100px; height: 120px; border-radius: 14px; cursor: pointer;
+      display: flex; align-items: flex-end; justify-content: center;
+      padding-bottom: 10px; font-size: 0.8rem; font-weight: 700;
+      color: #fff; text-shadow: 0 1px 3px rgba(0,0,0,0.5);
+      transition: transform 0.2s;
+    }
+    .scheme-swatch:hover { transform: scale(1.08); }
+    .visual-wheel { width: 200px; height: 200px; margin: 0 auto 2rem; position: relative; }
+    .visual-wheel canvas { border-radius: 50%; }
+    .dot {
+      position: absolute; width: 14px; height: 14px; border-radius: 50%;
+      border: 3px solid #fff; box-shadow: 0 0 6px rgba(0,0,0,0.4);
+      transform: translate(-50%, -50%);
+    }
+  </style>
+</head>
+<body>
+  <div id="nav"></div>
+  <div class="container">
+    <h1 class="section-title" style="margin-top:2rem">Palette Generator</h1>
+
+    <div class="input-row">
+      <input type="color" id="baseColor" value="#7c3aed" oninput="generate()">
+      <input type="text" id="baseHex" value="#7c3aed" placeholder="#hex" oninput="syncHex()" style="width:120px;text-align:center;font-weight:700">
+      <button class="btn btn-primary" onclick="randomBase()">🎲 Random</button>
+    </div>
+
+    <div class="visual-wheel">
+      <canvas id="miniWheel" width="200" height="200"></canvas>
+      <div id="dots"></div>
+    </div>
+
+    <div id="schemes"></div>
+  </div>
+  <div id="footer"></div>
+
+  <script>
+    document.getElementById('nav').innerHTML = CP.nav('palette.html');
+    document.getElementById('footer').innerHTML = CP.footer();
+
+    function syncHex() {
+      const v = document.getElementById('baseHex').value;
+      if (/^#?[0-9a-f]{6}$/i.test(v.replace('#',''))) {
+        document.getElementById('baseColor').value = v.startsWith('#') ? v : '#' + v;
+        generate();
+      }
+    }
+
+    function randomBase() {
+      const h = Math.random() * 360, s = 60 + Math.random() * 30, l = 40 + Math.random() * 25;
+      const hex = CP.rgb2hex(...CP.hsl2rgb(h, s, l));
+      document.getElementById('baseColor').value = hex;
+      document.getElementById('baseHex').value = hex;
+      generate();
+    }
+
+    function makeScheme(name, hues, baseS, baseL) {
+      return {
+        name,
+        colors: hues.map(h => {
+          const hh = ((h % 360) + 360) % 360;
+          const rgb = CP.hsl2rgb(hh, baseS, baseL);
+          return { h: hh, hex: CP.rgb2hex(...rgb) };
+        })
+      };
+    }
+
+    function generate() {
+      const hex = document.getElementById('baseColor').value;
+      document.getElementById('baseHex').value = hex;
+      const [h, s, l] = CP.rgb2hsl(...CP.hex2rgb(hex));
+
+      const schemes = [
+        makeScheme('Complementary', [h, h + 180], s, l),
+        makeScheme('Analogous', [h - 30, h - 15, h, h + 15, h + 30], s, l),
+        makeScheme('Triadic', [h, h + 120, h + 240], s, l),
+        makeScheme('Split-Complementary', [h, h + 150, h + 210], s, l),
+        makeScheme('Tetradic', [h, h + 90, h + 180, h + 270], s, l),
+      ];
+
+      // Render schemes
+      document.getElementById('schemes').innerHTML = schemes.map(sc => `
+        <div class="scheme">
+          <h3>${sc.name}</h3>
+          <div class="scheme-colors">
+            ${sc.colors.map(c => `<div class="scheme-swatch" style="background:${c.hex}" onclick="CP.copy('${c.hex}')">${c.hex}</div>`).join('')}
+          </div>
+        </div>
+      `).join('');
+
+      // Mini wheel
+      drawMiniWheel(schemes, s, l);
+    }
+
+    function drawMiniWheel(schemes, s, l) {
+      const c = document.getElementById('miniWheel');
+      const ctx = c.getContext('2d');
+      const cx = 100, cy = 100, r = 96;
+      ctx.clearRect(0, 0, 200, 200);
+      for (let a = 0; a < 360; a++) {
+        ctx.beginPath(); ctx.moveTo(cx, cy);
+        ctx.arc(cx, cy, r, (a-1)*Math.PI/180, (a+1)*Math.PI/180);
+        ctx.closePath();
+        ctx.fillStyle = `hsl(${a}, ${s}%, ${l}%)`;
+        ctx.fill();
+      }
+      // Dots for first scheme (complementary)
+      const allHues = [...new Set(schemes.flatMap(sc => sc.colors.map(c => c.h)))];
+      document.getElementById('dots').innerHTML = allHues.slice(0, 6).map(h => {
+        const rad = h * Math.PI / 180;
+        const x = cx + Math.cos(rad) * r * 0.7;
+        const y = cy + Math.sin(rad) * r * 0.7;
+        return `<div class="dot" style="left:${x}px;top:${y}px;background:hsl(${h},${s}%,${l}%)"></div>`;
+      }).join('');
+    }
+
+    generate();
+  </script>
+</body>
+</html>

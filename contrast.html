@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WCAG Contrast Checker — ColorPick</title>
+  <meta name="description" content="Check color contrast ratio for WCAG AA and AAA compliance. Ensure your text is readable for all users.">
+  <meta name="keywords" content="contrast checker, WCAG contrast ratio, accessibility color checker, AA AAA compliance">
+  <link rel="stylesheet" href="style.css">
+  <script src="colorpick.js"></script>
+  <style>
+    .contrast-inputs { display: flex; gap: 2rem; justify-content: center; align-items: center; flex-wrap: wrap; margin: 2rem 0; }
+    .color-input { text-align: center; }
+    .color-input label { display: block; margin-bottom: 0.5rem; color: var(--text2); font-weight: 600; text-transform: uppercase; font-size: 0.85rem; letter-spacing: 1px; }
+    .color-input input[type="color"] { width: 80px; height: 80px; border-radius: 16px; border: 3px solid rgba(255,255,255,0.1); cursor: pointer; }
+    .color-input input[type="text"] { margin-top: 0.5rem; width: 100px; text-align: center; font-weight: 700; }
+    .swap-btn { font-size: 2rem; cursor: pointer; background: none; border: none; color: var(--text2); transition: transform 0.2s; }
+    .swap-btn:hover { transform: rotate(180deg); color: var(--text); }
+    .preview-area {
+      border-radius: var(--radius); padding: 3rem 2rem; text-align: center; margin: 2rem 0;
+      transition: all 0.2s;
+    }
+    .preview-area h2 { font-size: 2rem; margin-bottom: 0.5rem; }
+    .preview-area p { font-size: 1rem; }
+    .preview-area .small { font-size: 0.85rem; margin-top: 0.5rem; }
+    .ratio-display { text-align: center; margin: 2rem 0; }
+    .ratio-num { font-size: 4rem; font-weight: 900; background: var(--gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    .ratio-label { color: var(--text2); font-size: 1rem; }
+    .results { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin: 2rem 0; }
+    .result-card {
+      background: var(--surface); border-radius: var(--radius); padding: 1.5rem; text-align: center;
+      border: 2px solid transparent;
+    }
+    .result-card.pass { border-color: #22c55e; }
+    .result-card.fail { border-color: #ef4444; }
+    .result-card .status { font-size: 2rem; margin-bottom: 0.5rem; }
+    .result-card .label { color: var(--text2); font-size: 0.85rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; }
+    .result-card .verdict { font-size: 1.2rem; font-weight: 900; margin-top: 0.5rem; }
+    .pass .verdict { color: #22c55e; }
+    .fail .verdict { color: #ef4444; }
+  </style>
+</head>
+<body>
+  <div id="nav"></div>
+  <div class="container">
+    <h1 class="section-title" style="margin-top:2rem">Contrast Checker</h1>
+
+    <div class="contrast-inputs">
+      <div class="color-input">
+        <label>Foreground</label>
+        <input type="color" id="fg" value="#ffffff" oninput="check()">
+        <br><input type="text" id="fgHex" value="#ffffff" oninput="syncFg()">
+      </div>
+      <button class="swap-btn" onclick="swap()">⇄</button>
+      <div class="color-input">
+        <label>Background</label>
+        <input type="color" id="bg" value="#1e1e2e" oninput="check()">
+        <br><input type="text" id="bgHex" value="#1e1e2e" oninput="syncBg()">
+      </div>
+    </div>
+
+    <div class="preview-area" id="preview">
+      <h2>Large Text (24px+)</h2>
+      <p>Normal body text looks like this (16px)</p>
+      <p class="small">Small text sample (14px)</p>
+    </div>
+
+    <div class="ratio-display">
+      <div class="ratio-num" id="ratio">13.5:1</div>
+      <div class="ratio-label">Contrast Ratio</div>
+    </div>
+
+    <div class="results" id="results"></div>
+  </div>
+  <div id="footer"></div>
+
+  <script>
+    document.getElementById('nav').innerHTML = CP.nav('contrast.html');
+    document.getElementById('footer').innerHTML = CP.footer();
+
+    function syncFg() {
+      const v = document.getElementById('fgHex').value;
+      if (/^#?[0-9a-f]{6}$/i.test(v.replace('#',''))) {
+        document.getElementById('fg').value = v.startsWith('#') ? v : '#'+v;
+        check();
+      }
+    }
+    function syncBg() {
+      const v = document.getElementById('bgHex').value;
+      if (/^#?[0-9a-f]{6}$/i.test(v.replace('#',''))) {
+        document.getElementById('bg').value = v.startsWith('#') ? v : '#'+v;
+        check();
+      }
+    }
+    function swap() {
+      const fg = document.getElementById('fg').value;
+      const bg = document.getElementById('bg').value;
+      document.getElementById('fg').value = bg;
+      document.getElementById('bg').value = fg;
+      document.getElementById('fgHex').value = bg;
+      document.getElementById('bgHex').value = fg;
+      check();
+    }
+
+    function check() {
+      const fgHex = document.getElementById('fg').value;
+      const bgHex = document.getElementById('bg').value;
+      document.getElementById('fgHex').value = fgHex;
+      document.getElementById('bgHex').value = bgHex;
+
+      const fgRgb = CP.hex2rgb(fgHex);
+      const bgRgb = CP.hex2rgb(bgHex);
+      const ratio = CP.contrast(fgRgb, bgRgb);
+      const r = ratio.toFixed(2);
+
+      document.getElementById('ratio').textContent = `${r}:1`;
+
+      const preview = document.getElementById('preview');
+      preview.style.background = bgHex;
+      preview.style.color = fgHex;
+
+      const tests = [
+        { label: 'AA Large Text', min: 3, desc: '≥ 3:1 (18px+ bold or 24px+)' },
+        { label: 'AA Normal Text', min: 4.5, desc: '≥ 4.5:1 (body text)' },
+        { label: 'AAA Large Text', min: 4.5, desc: '≥ 4.5:1 (enhanced)' },
+        { label: 'AAA Normal Text', min: 7, desc: '≥ 7:1 (enhanced body)' },
+      ];
+
+      document.getElementById('results').innerHTML = tests.map(t => {
+        const pass = ratio >= t.min;
+        return `<div class="result-card ${pass ? 'pass' : 'fail'}">
+          <div class="status">${pass ? '✅' : '❌'}</div>
+          <div class="label">${t.label}</div>
+          <div class="verdict">${pass ? 'PASS' : 'FAIL'}</div>
+          <div style="color:var(--text2);font-size:0.8rem;margin-top:0.3rem">${t.desc}</div>
+        </div>`;
+      }).join('');
+    }
+
+    check();
+  </script>
+</body>
+</html>

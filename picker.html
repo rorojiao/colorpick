@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Color Picker Online — ColorPick</title>
+  <meta name="description" content="Free online color picker with HSL, RGB, and HEX modes. Color wheel selection with real-time preview and one-click copy.">
+  <meta name="keywords" content="color picker online, hex color picker, rgb color picker, hsl color picker">
+  <link rel="stylesheet" href="style.css">
+  <script src="colorpick.js"></script>
+  <style>
+    .picker-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 2rem; }
+    .wheel-wrap { position: relative; width: 300px; height: 300px; margin: 0 auto; }
+    .wheel-canvas { border-radius: 50%; cursor: crosshair; }
+    .wheel-cursor {
+      position: absolute; width: 20px; height: 20px; border-radius: 50%;
+      border: 3px solid #fff; box-shadow: 0 0 4px rgba(0,0,0,0.5);
+      pointer-events: none; transform: translate(-50%, -50%);
+    }
+    .preview-box {
+      width: 100%; height: 200px; border-radius: var(--radius);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.5rem; font-weight: 900; cursor: pointer;
+      transition: background 0.15s;
+    }
+    .sliders label { display: block; margin: 0.8rem 0 0.3rem; color: var(--text2); font-weight: 600; font-size: 0.9rem; }
+    .sliders input[type="range"] { width: 100%; }
+    .value-row { display: flex; gap: 0.5rem; align-items: center; margin-top: 1rem; }
+    .value-row input { flex: 1; text-align: center; font-weight: 700; font-size: 1.1rem; }
+    @media (max-width: 768px) { .picker-layout { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+  <div id="nav"></div>
+  <div class="container">
+    <h1 class="section-title" style="margin-top:2rem">Color Picker</h1>
+
+    <div class="tabs">
+      <button class="tab active" onclick="setMode('hsl')">HSL</button>
+      <button class="tab" onclick="setMode('rgb')">RGB</button>
+      <button class="tab" onclick="setMode('hex')">HEX</button>
+    </div>
+
+    <div class="picker-layout">
+      <div class="card">
+        <div class="wheel-wrap">
+          <canvas class="wheel-canvas" id="wheel" width="300" height="300"></canvas>
+          <div class="wheel-cursor" id="cursor"></div>
+        </div>
+        <div class="sliders" id="sliders"></div>
+      </div>
+      <div class="card">
+        <div class="preview-box" id="preview" onclick="CP.copy(currentHex)"></div>
+        <div class="value-row">
+          <input type="text" id="hexInput" value="#7c3aed" oninput="fromHex(this.value)">
+          <button class="btn btn-secondary" onclick="CP.copy(currentHex)">📋 Copy</button>
+        </div>
+        <div id="values" style="margin-top:1rem;color:var(--text2);font-size:0.9rem"></div>
+      </div>
+    </div>
+  </div>
+  <div id="footer"></div>
+
+  <script>
+    document.getElementById('nav').innerHTML = CP.nav('picker.html');
+    document.getElementById('footer').innerHTML = CP.footer();
+
+    let mode = 'hsl';
+    let H = 270, S = 80, L = 55;
+    let currentHex = '#7c3aed';
+
+    function setMode(m) {
+      mode = m;
+      document.querySelectorAll('.tab').forEach((t, i) => t.classList.toggle('active', ['hsl','rgb','hex'][i] === m));
+      buildSliders();
+      update();
+    }
+
+    function buildSliders() {
+      const el = document.getElementById('sliders');
+      if (mode === 'hsl') {
+        el.innerHTML = `
+          <label>Hue: <span id="vH">${H}</span>°</label><input type="range" min="0" max="360" value="${H}" oninput="H=+this.value;update()">
+          <label>Saturation: <span id="vS">${S}</span>%</label><input type="range" min="0" max="100" value="${S}" oninput="S=+this.value;update()">
+          <label>Lightness: <span id="vL">${L}</span>%</label><input type="range" min="0" max="100" value="${L}" oninput="L=+this.value;update()">`;
+      } else if (mode === 'rgb') {
+        const [r,g,b] = CP.hsl2rgb(H, S, L);
+        el.innerHTML = `
+          <label>Red: <span id="vR">${r}</span></label><input type="range" min="0" max="255" value="${r}" oninput="fromRGB()">
+          <label>Green: <span id="vG">${g}</span></label><input type="range" min="0" max="255" value="${g}" oninput="fromRGB()">
+          <label>Blue: <span id="vB">${b}</span></label><input type="range" min="0" max="255" value="${b}" oninput="fromRGB()">`;
+      } else {
+        el.innerHTML = `<p style="color:var(--text2);margin-top:1rem">Type a HEX value below or use the color wheel</p>`;
+      }
+    }
+
+    function fromRGB() {
+      const ranges = document.querySelectorAll('#sliders input[type="range"]');
+      const r = +ranges[0].value, g = +ranges[1].value, b = +ranges[2].value;
+      [H, S, L] = CP.rgb2hsl(r, g, b);
+      update();
+    }
+
+    function fromHex(hex) {
+      if (/^#?[0-9a-f]{6}$/i.test(hex.replace('#',''))) {
+        const rgb = CP.hex2rgb(hex);
+        [H, S, L] = CP.rgb2hsl(...rgb);
+        update();
+      }
+    }
+
+    function update() {
+      const rgb = CP.hsl2rgb(H, S, L);
+      currentHex = CP.rgb2hex(...rgb);
+      const preview = document.getElementById('preview');
+      preview.style.background = currentHex;
+      const lum = CP.luminance(...rgb);
+      preview.style.color = lum > 0.179 ? '#000' : '#fff';
+      preview.textContent = currentHex;
+      document.getElementById('hexInput').value = currentHex;
+      document.getElementById('values').innerHTML =
+        `HSL: ${H}°, ${S}%, ${L}% &nbsp;|&nbsp; RGB: ${rgb.join(', ')}`;
+      // Update spans
+      const vH = document.getElementById('vH'); if(vH) vH.textContent = H;
+      const vS = document.getElementById('vS'); if(vS) vS.textContent = S;
+      const vL = document.getElementById('vL'); if(vL) vL.textContent = L;
+      const vR = document.getElementById('vR'); if(vR) vR.textContent = rgb[0];
+      const vG = document.getElementById('vG'); if(vG) vG.textContent = rgb[1];
+      const vB = document.getElementById('vB'); if(vB) vB.textContent = rgb[2];
+      drawWheel();
+    }
+
+    // Color wheel
+    function drawWheel() {
+      const c = document.getElementById('wheel');
+      const ctx = c.getContext('2d');
+      const cx = 150, cy = 150, r = 145;
+      ctx.clearRect(0, 0, 300, 300);
+      for (let angle = 0; angle < 360; angle++) {
+        const start = (angle - 1) * Math.PI / 180;
+        const end = (angle + 1) * Math.PI / 180;
+        ctx.beginPath();
+        ctx.moveTo(cx, cy);
+        ctx.arc(cx, cy, r, start, end);
+        ctx.closePath();
+        ctx.fillStyle = `hsl(${angle}, ${S}%, ${L}%)`;
+        ctx.fill();
+      }
+      // Position cursor
+      const rad = H * Math.PI / 180;
+      const dist = r * 0.75;
+      const cursor = document.getElementById('cursor');
+      cursor.style.left = (cx + Math.cos(rad) * dist) + 'px';
+      cursor.style.top = (cy + Math.sin(rad) * dist) + 'px';
+      cursor.style.background = currentHex;
+    }
+
+    // Wheel interaction
+    const wheel = document.getElementById('wheel');
+    let dragging = false;
+    function pickFromWheel(e) {
+      const rect = wheel.getBoundingClientRect();
+      const x = e.clientX - rect.left - 150;
+      const y = e.clientY - rect.top - 150;
+      H = Math.round((Math.atan2(y, x) * 180 / Math.PI + 360) % 360);
+      if (mode === 'hsl') {
+        const ranges = document.querySelectorAll('#sliders input[type="range"]');
+        if (ranges[0]) ranges[0].value = H;
+      }
+      if (mode === 'rgb') buildSliders();
+      update();
+    }
+    wheel.addEventListener('mousedown', e => { dragging = true; pickFromWheel(e); });
+    window.addEventListener('mousemove', e => { if (dragging) pickFromWheel(e); });
+    window.addEventListener('mouseup', () => dragging = false);
+
+    buildSliders();
+    update();
+  </script>
+</body>
+</html>

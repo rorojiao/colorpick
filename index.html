@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ColorPick — Color Picker Online & Palette Generator</title>
+  <meta name="description" content="Free color picker online, color palette generator, contrast checker. Design tools for designers and developers.">
+  <meta name="keywords" content="color picker online, color palette generator, contrast checker, hex color, rgb color, hsl">
+  <meta property="og:title" content="ColorPick — Color Tools for Designers">
+  <meta property="og:description" content="Free online color picker, palette generator, and WCAG contrast checker.">
+  <link rel="stylesheet" href="style.css">
+  <script src="colorpick.js"></script>
+</head>
+<body>
+  <div id="nav"></div>
+
+  <div class="hero">
+    <h1>Design with Color</h1>
+    <p>Free tools to pick, generate, and validate beautiful color palettes</p>
+    <div style="margin-top:2rem">
+      <button class="btn btn-primary" onclick="generate()">🎲 Generate Palette</button>
+    </div>
+  </div>
+
+  <div class="container">
+    <div id="palette" class="palette-row" style="margin-bottom:3rem"></div>
+
+    <h2 class="section-title">Tools</h2>
+    <div class="tools-grid">
+      <a href="picker.html" class="tool-card">
+        <div class="icon">🎯</div>
+        <h3>Color Picker</h3>
+        <p>Pick any color with HSL, RGB, or HEX. Color wheel included.</p>
+      </a>
+      <a href="palette.html" class="tool-card">
+        <div class="icon">🎨</div>
+        <h3>Palette Generator</h3>
+        <p>Generate complementary, analogous, triadic & split-complementary schemes.</p>
+      </a>
+      <a href="contrast.html" class="tool-card">
+        <div class="icon">🔍</div>
+        <h3>Contrast Checker</h3>
+        <p>Check WCAG AA/AAA compliance for text and background combinations.</p>
+      </a>
+    </div>
+  </div>
+
+  <div id="footer"></div>
+  <script>
+    document.getElementById('nav').innerHTML = CP.nav('index.html');
+    document.getElementById('footer').innerHTML = CP.footer();
+
+    function generate() {
+      const colors = CP.harmonize(5);
+      const el = document.getElementById('palette');
+      el.innerHTML = colors.map(c =>
+        `<div class="swatch" style="background:${c.hex}" onclick="CP.copy('${c.hex}')">
+          ${c.hex}
+        </div>`
+      ).join('');
+    }
+    generate();
+  </script>
+</body>
+</html>
