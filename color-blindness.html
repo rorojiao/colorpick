@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Color Blindness Simulator — ColorPick</title>
+  <meta name="description" content="Simulate how colors appear to people with different types of color blindness. Upload images or test color swatches.">
+  <link rel="stylesheet" href="style.css">
+  <script src="colorpick.js"></script>
+  <style>
+    .upload-area { max-width:500px; margin:2rem auto; border:2px dashed rgba(255,255,255,0.15); border-radius:16px; padding:3rem 2rem; text-align:center; cursor:pointer; transition:all 0.3s; }
+    .upload-area:hover { border-color:var(--accent); background:rgba(124,58,237,0.05); }
+    .upload-area.dragover { border-color:var(--accent2); background:rgba(236,72,153,0.05); }
+    .color-mode { display:flex; gap:1rem; justify-content:center; margin:1.5rem 0; align-items:center; flex-wrap:wrap; }
+    .color-mode input[type="color"] { width:60px; height:48px; border-radius:12px; cursor:pointer; padding:2px; }
+    .sim-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:1.5rem; margin:2rem 0; }
+    .sim-card { background:var(--surface); border-radius:var(--radius); padding:1rem; border:1px solid rgba(255,255,255,0.05); overflow:hidden; }
+    .sim-card h4 { margin-bottom:0.5rem; font-size:0.95rem; }
+    .sim-card .desc { color:var(--text2); font-size:0.8rem; margin-bottom:0.75rem; }
+    .sim-card canvas { width:100%; border-radius:10px; display:block; }
+    .swatch-preview { display:flex; gap:0.5rem; margin-top:0.5rem; }
+    .mini-swatch { width:40px; height:40px; border-radius:8px; cursor:pointer; transition:all 0.3s; display:flex; align-items:center; justify-content:center; font-size:0.6rem; font-weight:700; text-shadow:0 1px 2px rgba(0,0,0,0.4); color:#fff; }
+    .mini-swatch:hover { transform:scale(1.15); }
+    .mode-switch { display:flex; gap:0.5rem; justify-content:center; margin:1.5rem 0; }
+    .mode-btn { padding:0.5rem 1.2rem; border-radius:10px; background:var(--surface2); color:var(--text2); border:none; cursor:pointer; font-weight:600; font-family:inherit; transition:all 0.2s; }
+    .mode-btn.active { background:var(--gradient); color:#fff; }
+    .tool-link{padding:6px 14px;background:var(--surface);border-radius:20px;color:var(--text2);font-size:14px;border:1px solid rgba(255,255,255,0.05);transition:all 0.2s;}.tool-link:hover{border-color:var(--accent);color:var(--text);}
+  </style>
+</head>
+<body>
+  <div id="nav"></div>
+  <div class="container" style="padding-top:2rem;">
+    <h1 class="section-title" style="background:var(--gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent;">Color Blindness Simulator</h1>
+    <p style="text-align:center;color:var(--text2);margin-bottom:1rem;">See how colors appear under 8 types of color vision deficiency</p>
+
+    <div class="mode-switch">
+      <button class="mode-btn active" onclick="setMode('image')">📷 Image Mode</button>
+      <button class="mode-btn" onclick="setMode('color')">🎨 Color Mode</button>
+    </div>
+
+    <div id="imageMode">
+      <div class="upload-area" id="uploadArea" onclick="document.getElementById('fileInput').click()">
+        <input type="file" id="fileInput" accept="image/*" style="display:none">
+        <div style="font-size:3rem;margin-bottom:0.5rem;">📤</div>
+        <p style="color:var(--text2);">Drop an image here or click to upload</p>
+      </div>
+    </div>
+
+    <div id="colorMode" style="display:none;">
+      <div class="color-mode">
+        <input type="color" id="simColor" value="#e74c3c">
+        <input type="text" id="simHex" value="#e74c3c" maxlength="7" style="width:100px;text-align:center;">
+        <button class="btn btn-primary" onclick="simulateColor()">Simulate</button>
+      </div>
+    </div>
+
+    <div class="sim-grid" id="simGrid"></div>
+  </div>
+
+  <div style="max-width:800px;margin:3rem auto;padding:20px;text-align:center;">
+    <p style="color:var(--text2);margin-bottom:12px;">🔗 More Color Tools</p>
+    <div style="display:flex;flex-wrap:wrap;gap:8px;justify-content:center;">
+      <a href="index.html" class="tool-link">🏠 Home</a>
+      <a href="palette-generator.html" class="tool-link">🧠 AI Palette</a>
+      <a href="color-mixer.html" class="tool-link">🎨 Color Mixer</a>
+      <a href="shades-generator.html" class="tool-link">🌗 Shades</a>
+      <a href="hex-rgb-converter.html" class="tool-link">🔄 Converter</a>
+      <a href="contrast-checker.html" class="tool-link">🔍 Contrast</a>
+    </div>
+  </div>
+  <div id="footer"></div>
+
+  <script>
+    document.getElementById('nav').innerHTML = CP.nav('color-blindness.html');
+    document.getElementById('footer').innerHTML = CP.footer();
+
+    // Color blindness simulation matrices (Brettel/Vienot)
+    const matrices = {
+      'Protanopia':    [0.567,0.433,0,0,0.558,0.442,0,0,0.242,0.758,0,0,0,0,0,1],
+      'Deuteranopia':  [0.625,0.375,0,0,0.7,0.3,0,0,0,0.3,0.7,0,0,0,0,1],
+      'Tritanopia':    [0.95,0.05,0,0,0,0.433,0.567,0,0,0.475,0.525,0,0,0,0,1],
+      'Protanomaly':   [0.817,0.183,0,0,0.333,0.667,0,0,0,0.125,0.875,0,0,0,0,1],
+      'Deuteranomaly': [0.8,0.2,0,0,0.258,0.742,0,0,0,0.142,0.858,0,0,0,0,1],
+      'Tritanomaly':   [0.967,0.033,0,0,0,0.733,0.267,0,0,0.183,0.817,0,0,0,0,1],
+      'Achromatopsia': [0.299,0.587,0.114,0,0.299,0.587,0.114,0,0.299,0.587,0.114,0,0,0,0,1],
+      'Achromatomaly': [0.618,0.320,0.062,0,0.163,0.775,0.062,0,0.163,0.320,0.516,0,0,0,0,1],
+    };
+
+    const descriptions = {
+      'Protanopia':'No red cones — red appears dark',
+      'Deuteranopia':'No green cones — green/red confusion',
+      'Tritanopia':'No blue cones — blue/yellow confusion',
+      'Protanomaly':'Weak red cones — reduced red sensitivity',
+      'Deuteranomaly':'Weak green cones — most common type',
+      'Tritanomaly':'Weak blue cones — rare',
+      'Achromatopsia':'Complete color blindness — grayscale',
+      'Achromatomaly':'Partial color blindness — muted colors',
+    };
+
+    let currentMode = 'image';
+    let loadedImage = null;
+
+    function setMode(mode) {
+      currentMode = mode;
+      document.querySelectorAll('.mode-btn').forEach(b => b.classList.toggle('active', b.textContent.includes(mode==='image'?'Image':'Color')));
+      document.getElementById('imageMode').style.display = mode==='image'?'block':'none';
+      document.getElementById('colorMode').style.display = mode==='color'?'block':'none';
+      if(mode==='color') simulateColor();
+      else if(loadedImage) processImage(loadedImage);
+      else document.getElementById('simGrid').innerHTML = '';
+    }
+
+    // File upload
+    const uploadArea = document.getElementById('uploadArea');
+    const fileInput = document.getElementById('fileInput');
+    uploadArea.addEventListener('dragover', e=>{e.preventDefault();uploadArea.classList.add('dragover');});
+    uploadArea.addEventListener('dragleave', ()=>uploadArea.classList.remove('dragover'));
+    uploadArea.addEventListener('drop', e=>{e.preventDefault();uploadArea.classList.remove('dragover');handleFile(e.dataTransfer.files[0]);});
+    fileInput.addEventListener('change', e=>handleFile(e.target.files[0]));
+
+    function handleFile(file) {
+      if(!file||!file.type.startsWith('image/')) return;
+      const reader = new FileReader();
+      reader.onload = e => {
+        const img = new Image();
+        img.onload = () => { loadedImage = img; processImage(img); };
+        img.src = e.target.result;
+      };
+      reader.readAsDataURL(file);
+      uploadArea.innerHTML = '<p style="color:var(--text);">✅ Image loaded! Processing...</p>';
+    }
+
+    function applyMatrix(imageData, matrix) {
+      const d = imageData.data;
+      for(let i=0;i<d.length;i+=4) {
+        const r=d[i], g=d[i+1], b=d[i+2];
+        d[i]   = r*matrix[0] + g*matrix[1] + b*matrix[2];
+        d[i+1] = r*matrix[4] + g*matrix[5] + b*matrix[6];
+        d[i+2] = r*matrix[8] + g*matrix[9] + b*matrix[10];
+      }
+      return imageData;
+    }
+
+    function processImage(img) {
+      const maxW = 300;
+      const scale = Math.min(1, maxW / img.width);
+      const w = Math.round(img.width * scale);
+      const h = Math.round(img.height * scale);
+
+      let html = '';
+      for(const [name, matrix] of Object.entries(matrices)) {
+        html += `<div class="sim-card">
+          <h4>${name}</h4>
+          <p class="desc">${descriptions[name]}</p>
+          <canvas id="cv_${name}" width="${w}" height="${h}"></canvas>
+        </div>`;
+      }
+      document.getElementById('simGrid').innerHTML = html;
+
+      // Render each
+      for(const [name, matrix] of Object.entries(matrices)) {
+        const canvas = document.getElementById('cv_'+name);
+        const ctx = canvas.getContext('2d');
+        ctx.drawImage(img, 0, 0, w, h);
+        const imgData = ctx.getImageData(0, 0, w, h);
+        applyMatrix(imgData, matrix);
+        ctx.putImageData(imgData, 0, 0);
+      }
+    }
+
+    // Color mode
+    const simColor=document.getElementById('simColor'), simHex=document.getElementById('simHex');
+    simColor.addEventListener('input',e=>{simHex.value=e.target.value;simulateColor();});
+    simHex.addEventListener('input',e=>{if(/^#[0-9a-f]{6}$/i.test(e.target.value)){simColor.value=e.target.value;simulateColor();}});
+
+    function simulateColor() {
+      const [r,g,b] = CP.hex2rgb(simColor.value);
+      let html = '';
+      for(const [name, matrix] of Object.entries(matrices)) {
+        const nr = Math.round(r*matrix[0] + g*matrix[1] + b*matrix[2]);
+        const ng = Math.round(r*matrix[4] + g*matrix[5] + b*matrix[6]);
+        const nb = Math.round(r*matrix[8] + g*matrix[9] + b*matrix[10]);
+        const simulated = CP.rgb2hex(Math.min(255,nr),Math.min(255,ng),Math.min(255,nb));
+        const original = simColor.value;
+        html += `<div class="sim-card">
+          <h4>${name}</h4>
+          <p class="desc">${descriptions[name]}</p>
+          <div class="swatch-preview">
+            <div class="mini-swatch" style="background:${original};flex:1;height:60px;border-radius:10px;" onclick="CP.copy('${original}')">Original</div>
+            <div class="mini-swatch" style="background:${simulated};flex:1;height:60px;border-radius:10px;" onclick="CP.copy('${simulated}')">${simulated}</div>
+          </div>
+        </div>`;
+      }
+      document.getElementById('simGrid').innerHTML = html;
+    }
+  </script>
+<script>(function(){var s=location.hostname,p=location.pathname;new Image().src="https://site-analytics.cap.1ktower.com/hit?s="+encodeURIComponent(s)+"&p="+encodeURIComponent(p)+"&t="+Date.now();})()</script>
+</body>
+</html>

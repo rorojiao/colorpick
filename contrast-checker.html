@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contrast Checker — WCAG — ColorPick</title>
+  <meta name="description" content="Check color contrast ratios for WCAG AA and AAA compliance. Test text readability in real-time.">
+  <link rel="stylesheet" href="style.css">
+  <script src="colorpick.js"></script>
+  <style>
+    .checker-row { display:flex; flex-wrap:wrap; gap:2rem; justify-content:center; margin:2rem 0; }
+    .color-pick { display:flex; flex-direction:column; align-items:center; gap:0.5rem; }
+    .color-pick input[type="color"] { width:80px; height:60px; border-radius:14px; cursor:pointer; padding:2px; }
+    .color-pick input[type="text"] { width:110px; text-align:center; }
+    .ratio-display { text-align:center; margin:2rem 0; }
+    .ratio-num { font-size:4rem; font-weight:900; background:var(--gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent; }
+    .ratio-label { color:var(--text2); font-size:1rem; margin-top:0.25rem; }
+    .wcag-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:1rem; max-width:700px; margin:2rem auto; }
+    .wcag-card { background:var(--surface); border-radius:14px; padding:1.2rem; text-align:center; border:2px solid transparent; transition:all 0.3s; }
+    .wcag-card.pass { border-color:#10b981; }
+    .wcag-card.fail { border-color:#ef4444; }
+    .wcag-card .status { font-size:1.5rem; margin-bottom:0.5rem; }
+    .wcag-card .level { font-weight:700; font-size:1.1rem; }
+    .wcag-card .desc { color:var(--text2); font-size:0.85rem; margin-top:0.25rem; }
+    .preview-box { max-width:600px; margin:2rem auto; border-radius:16px; padding:2rem; transition:all 0.5s; }
+    .preview-box h2 { margin-bottom:0.5rem; }
+    .preview-box p { font-size:1rem; line-height:1.6; }
+    .preview-box .small-text { font-size:0.8rem; margin-top:1rem; }
+    .swap-btn { background:none; border:none; font-size:1.5rem; cursor:pointer; transition:transform 0.3s; }
+    .swap-btn:hover { transform:rotate(180deg); }
+    .bg-transition{transition:background-color 0.6s ease;}
+    .tool-link{padding:6px 14px;background:var(--surface);border-radius:20px;color:var(--text2);font-size:14px;border:1px solid rgba(255,255,255,0.05);transition:all 0.2s;}.tool-link:hover{border-color:var(--accent);color:var(--text);}
+  </style>
+</head>
+<body class="bg-transition">
+  <div id="nav"></div>
+  <div class="container" style="padding-top:2rem;">
+    <h1 class="section-title" style="background:var(--gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent;">Contrast Checker</h1>
+    <p style="text-align:center;color:var(--text2);margin-bottom:1rem;">WCAG 2.1 contrast ratio checker for accessibility</p>
+
+    <div class="checker-row">
+      <div class="color-pick">
+        <span style="color:var(--text2);font-size:0.85rem;">Foreground</span>
+        <input type="color" id="fg" value="#ffffff">
+        <input type="text" id="fgHex" value="#ffffff" maxlength="7">
+      </div>
+      <button class="swap-btn" onclick="swapColors()" title="Swap">🔄</button>
+      <div class="color-pick">
+        <span style="color:var(--text2);font-size:0.85rem;">Background</span>
+        <input type="color" id="bg" value="#1e1e2e">
+        <input type="text" id="bgHex" value="#1e1e2e" maxlength="7">
+      </div>
+    </div>
+
+    <div class="ratio-display">
+      <div class="ratio-num" id="ratioNum">—</div>
+      <div class="ratio-label">Contrast Ratio</div>
+    </div>
+
+    <div class="wcag-grid" id="wcagGrid"></div>
+
+    <h3 style="text-align:center;margin:2rem 0 1rem;color:var(--text);">Live Preview</h3>
+    <div class="preview-box" id="previewBox">
+      <h2>Heading Text (24px Bold)</h2>
+      <p>This is normal body text at 16px. Check if it's readable against the background. Good contrast ensures accessibility for all users, including those with visual impairments.</p>
+      <p class="small-text">This is small text at 12.8px — requires higher contrast for WCAG AAA compliance.</p>
+    </div>
+  </div>
+
+  <div style="max-width:800px;margin:3rem auto;padding:20px;text-align:center;">
+    <p style="color:var(--text2);margin-bottom:12px;">🔗 More Color Tools</p>
+    <div style="display:flex;flex-wrap:wrap;gap:8px;justify-content:center;">
+      <a href="index.html" class="tool-link">🏠 Home</a>
+      <a href="palette-generator.html" class="tool-link">🧠 AI Palette</a>
+      <a href="color-mixer.html" class="tool-link">🎨 Color Mixer</a>
+      <a href="shades-generator.html" class="tool-link">🌗 Shades</a>
+      <a href="hex-rgb-converter.html" class="tool-link">🔄 Converter</a>
+      <a href="color-blindness.html" class="tool-link">👁️ Blindness Sim</a>
+    </div>
+  </div>
+  <div id="footer"></div>
+
+  <script>
+    document.getElementById('nav').innerHTML = CP.nav('contrast-checker.html');
+    document.getElementById('footer').innerHTML = CP.footer();
+
+    const fg=document.getElementById('fg'), fgHex=document.getElementById('fgHex');
+    const bg_=document.getElementById('bg'), bgHex=document.getElementById('bgHex');
+
+    fg.addEventListener('input',e=>{fgHex.value=e.target.value;update();});
+    bg_.addEventListener('input',e=>{bgHex.value=e.target.value;update();});
+    fgHex.addEventListener('input',e=>{if(/^#[0-9a-f]{6}$/i.test(e.target.value)){fg.value=e.target.value;update();}});
+    bgHex.addEventListener('input',e=>{if(/^#[0-9a-f]{6}$/i.test(e.target.value)){bg_.value=e.target.value;update();}});
+
+    function swapColors() {
+      const tmp = fg.value;
+      fg.value = bg_.value; fgHex.value = bg_.value;
+      bg_.value = tmp; bgHex.value = tmp;
+      update();
+    }
+
+    function update() {
+      const fgRgb = CP.hex2rgb(fg.value);
+      const bgRgb = CP.hex2rgb(bg_.value);
+      const ratio = CP.contrast(fgRgb, bgRgb);
+      const r = ratio.toFixed(2);
+
+      document.getElementById('ratioNum').textContent = r + ':1';
+
+      const checks = [
+        {level:'AA Large',min:3,desc:'≥18pt or 14pt bold'},
+        {level:'AA Normal',min:4.5,desc:'Normal text (≥16px)'},
+        {level:'AAA Large',min:4.5,desc:'≥18pt or 14pt bold'},
+        {level:'AAA Normal',min:7,desc:'Normal text (≥16px)'},
+      ];
+
+      document.getElementById('wcagGrid').innerHTML = checks.map(c => {
+        const pass = ratio >= c.min;
+        return `<div class="wcag-card ${pass?'pass':'fail'}">
+          <div class="status">${pass?'✅':'❌'}</div>
+          <div class="level">${c.level}</div>
+          <div class="desc">${c.desc} (≥${c.min}:1)</div>
+        </div>`;
+      }).join('');
+
+      const box = document.getElementById('previewBox');
+      box.style.backgroundColor = bg_.value;
+      box.style.color = fg.value;
+
+      const [br,bg2,bb] = bgRgb;
+      document.body.style.backgroundColor = `rgb(${Math.round(br*0.08)},${Math.round(bg2*0.08)},${Math.round(bb*0.08+10)})`;
+    }
+
+    update();
+  </script>
+<script>(function(){var s=location.hostname,p=location.pathname;new Image().src="https://site-analytics.cap.1ktower.com/hit?s="+encodeURIComponent(s)+"&p="+encodeURIComponent(p)+"&t="+Date.now();})()</script>
+</body>
+</html>

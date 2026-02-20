@@ -90,7 +90,10 @@ const CP = {
   nav(active) {
     const pages = [
       ['index.html', 'Home'], ['picker.html', 'Picker'],
-      ['palette.html', 'Palette'], ['contrast.html', 'Contrast']
+      ['palette.html', 'Palette'], ['contrast.html', 'Contrast'],
+      ['palette-generator.html', 'AI Palette'], ['color-mixer.html', 'Mixer'],
+      ['shades-generator.html', 'Shades'], ['hex-rgb-converter.html', 'Converter'],
+      ['contrast-checker.html', 'WCAG'], ['color-blindness.html', 'Blindness']
     ];
     return `<nav>
       <a href="index.html" class="logo">ColorPick 🎨</a>
