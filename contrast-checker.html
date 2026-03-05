@@ -3,8 +3,82 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Contrast Checker — WCAG — ColorPick</title>
-  <meta name="description" content="Check color contrast ratios for WCAG AA and AAA compliance. Test text readability in real-time.">
+  <title>Contrast Checker WCAG - Free Color Accessibility Tester | ColorPick</title>
+  <meta name="description" content="Check color contrast ratios for WCAG AA and AAA compliance. Test text readability against any background in real-time. Free online color accessibility tool.">
+  <link rel="canonical" href="https://rorojiao.github.io/colorpick/contrast-checker.html">
+  <meta property="og:title" content="Contrast Checker WCAG - Free Color Accessibility Tester | ColorPick">
+  <meta property="og:description" content="Check color contrast ratios for WCAG AA and AAA compliance. Test text readability against any background in real-time. Free online color accessibility tool.">
+  <meta property="og:url" content="https://rorojiao.github.io/colorpick/contrast-checker.html">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://rorojiao.github.io/colorpick/og-image.svg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Contrast Checker WCAG - Free Color Accessibility Tester | ColorPick">
+  <meta name="twitter:description" content="Check color contrast ratios for WCAG AA and AAA compliance. Test text readability against any background in real-time. Free online color accessibility tool.">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "WCAG Color Contrast Checker",
+    "description": "Check color contrast ratios for WCAG AA and AAA compliance. Test text readability against any background in real-time. Free online color accessibility tool.",
+    "url": "https://rorojiao.github.io/colorpick/contrast-checker.html",
+    "applicationCategory": "UtilityApplication",
+    "operatingSystem": "All",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+    "provider": { "@type": "Organization", "name": "ColorPick", "url": "https://rorojiao.github.io/colorpick/" }
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What WCAG levels does this contrast checker test?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "This contrast checker tests both WCAG AA (minimum contrast of 4.5:1 for normal text, 3:1 for large text) and WCAG AAA (enhanced contrast of 7:1 for normal text, 4.5:1 for large text). Results are shown instantly as you adjust colors."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is considered "large text" in WCAG guidelines?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "WCAG defines large text as 18pt (24px) or larger for regular weight, or 14pt (approximately 18.67px) or larger for bold text. Large text has lower contrast requirements because it is inherently easier to read at bigger sizes."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I test contrast for UI components?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, the contrast checker works for any foreground and background color combination, including UI components like buttons, icons, and borders. For non-text UI components, WCAG 2.1 requires a minimum contrast ratio of 3:1 against adjacent colors."
+      }
+    }
+    ]
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "ColorPick",
+      "item": "https://rorojiao.github.io/colorpick/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Contrast Checker",
+      "item": "https://rorojiao.github.io/colorpick/contrast-checker.html"
+    }
+    ]
+  }
+  </script>
   <link rel="stylesheet" href="style.css">
   <script src="colorpick.js"></script>
   <style>
@@ -152,5 +226,29 @@
        data-full-width-responsive="true"></ins>
   <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
 </div>
+
+<!-- FAQ Section -->
+<section style="max-width:860px;margin:3rem auto;padding:0 1rem;">
+  <h2 style="font-size:1.4rem;font-weight:800;margin-bottom:1.2rem;">Frequently Asked Questions</h2>
+  <details>
+    <summary>What WCAG levels does this contrast checker test?</summary>
+    <p>This contrast checker tests both WCAG AA (minimum contrast of 4.5:1 for normal text, 3:1 for large text) and WCAG AAA (enhanced contrast of 7:1 for normal text, 4.5:1 for large text). Results are shown instantly as you adjust colors.</p>
+  </details>
+  <details>
+    <summary>What is considered "large text" in WCAG guidelines?</summary>
+    <p>WCAG defines large text as 18pt (24px) or larger for regular weight, or 14pt (approximately 18.67px) or larger for bold text. Large text has lower contrast requirements because it is inherently easier to read at bigger sizes.</p>
+  </details>
+  <details>
+    <summary>Can I test contrast for UI components?</summary>
+    <p>Yes, the contrast checker works for any foreground and background color combination, including UI components like buttons, icons, and borders. For non-text UI components, WCAG 2.1 requires a minimum contrast ratio of 3:1 against adjacent colors.</p>
+  </details>
+</section>
+<style>
+details{border:1px solid rgba(255,255,255,0.1);border-radius:10px;margin-bottom:0.75rem;padding:0.9rem 1.1rem;background:var(--surface,#1e1e2e);}
+details summary{font-weight:700;cursor:pointer;color:var(--text,#e0e0ff);list-style:none;}
+details summary::-webkit-details-marker{display:none;}
+details[open] summary{color:var(--accent,#a78bfa);}
+details p{margin-top:0.7rem;color:var(--text2,#a0a0c0);line-height:1.6;font-size:0.95rem;}
+</style>
 </body>
 </html>
