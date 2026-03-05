@@ -1,21 +1,22 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Color Mixer - Blend & Mix Colors Online Free | ColorPick</title>
-  <meta name="description" content="Mix any two colors and see the blended result with gradient transitions. Multiple blend modes supported. Free online color mixing tool for designers and artists.">
-  <link rel="canonical" href="https://rorojiao.github.io/colorpick/color-mixer.html">
-  <meta property="og:title" content="Color Mixer - Blend & Mix Colors Online Free | ColorPick">
-  <meta property="og:description" content="Mix any two colors and see the blended result with gradient transitions. Multiple blend modes supported. Free online color mixing tool for designers and artists.">
-  <meta property="og:url" content="https://rorojiao.github.io/colorpick/color-mixer.html">
-  <meta property="og:type" content="website">
-  <meta property="og:image" content="https://rorojiao.github.io/colorpick/og-image.svg">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Color Mixer - Blend & Mix Colors Online Free | ColorPick">
-  <meta name="twitter:description" content="Mix any two colors and see the blended result with gradient transitions. Multiple blend modes supported. Free online color mixing tool for designers and artists.">
-  <meta name="twitter:image" content="https://rorojiao.github.io/colorpick/og-image.svg">
-  <script type="application/ld+json">
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Color Mixer - Blend &amp; Mix Colors Online Free | ColorPick</title>
+<meta content="Mix any two colors and see the blended result with gradient transitions. Multiple blend modes supported. Free online color mixing tool for designers and artists." name="description"/>
+<link href="https://rorojiao.github.io/colorpick/color-mixer.html" rel="canonical"/>
+<meta content="Color Mixer - Blend &amp; Mix Colors Online Free | ColorPick" property="og:title"/>
+<meta content="Mix any two colors and see the blended result with gradient transitions. Multiple blend modes supported. Free online color mixing tool for designers and artists." property="og:description"/>
+<meta content="https://rorojiao.github.io/colorpick/color-mixer.html" property="og:url"/>
+<meta content="website" property="og:type"/>
+<meta content="https://rorojiao.github.io/colorpick/og-image.svg" property="og:image"/>
+<meta content="summary_large_image" name="twitter:card"/>
+<meta content="Color Mixer - Blend &amp; Mix Colors Online Free | ColorPick" name="twitter:title"/>
+<meta content="Mix any two colors and see the blended result with gradient transitions. Multiple blend modes supported. Free online color mixing tool for designers and artists." name="twitter:description"/>
+<meta content="https://rorojiao.github.io/colorpick/og-image.svg" name="twitter:image"/>
+<script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "SoftwareApplication",
@@ -28,7 +29,7 @@
     "provider": { "@type": "Organization", "name": "ColorPick", "url": "https://rorojiao.github.io/colorpick/" }
   }
   </script>
-  <script type="application/ld+json">
+<script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "FAQPage",
@@ -60,7 +61,7 @@
     ]
   }
   </script>
-  <script type="application/ld+json">
+<script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
@@ -80,9 +81,9 @@
     ]
   }
   </script>
-  <link rel="stylesheet" href="style.css">
-  <script src="colorpick.js"></script>
-  <style>
+<link href="style.css" rel="stylesheet"/>
+<script src="colorpick.js"></script>
+<style>
     .mixer-row { display:flex; flex-wrap:wrap; gap:1.5rem; align-items:center; justify-content:center; margin:2rem 0; }
     .color-input-group { display:flex; flex-direction:column; align-items:center; gap:0.5rem; }
     .color-input-group input[type="color"] { width:80px; height:80px; border-radius:16px; cursor:pointer; padding:2px; }
@@ -103,61 +104,56 @@
     .tool-link{padding:6px 14px;background:var(--surface);border-radius:20px;color:var(--text2);font-size:14px;border:1px solid rgba(255,255,255,0.05);transition:all 0.2s;}.tool-link:hover{border-color:var(--accent);color:var(--text);}
     @media(max-width:768px) { .step-swatch{width:45px;height:60px;font-size:0.55rem;} }
   </style>
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8346383990981353" crossorigin="anonymous"></script>
+<script async="" crossorigin="anonymous" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8346383990981353"></script>
 <script>
   (adsbygoogle = window.adsbygoogle || []).push({
     google_ad_client: "ca-pub-8346383990981353",
     enable_page_level_ads: true
   });
 </script>
-</head>
+<meta content="ColorPick" property="og:site_name"/></head>
 <body class="bg-transition">
-  <div id="nav"></div>
-  <div class="container" style="padding-top:2rem;">
-    <h1 class="section-title" style="background:var(--gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent;">Color Mixer</h1>
-    <p style="text-align:center;color:var(--text2);margin-bottom:1rem;">Blend two colors and explore the gradient between them</p>
-
-    <div class="mixer-row">
-      <div class="color-input-group">
-        <input type="color" id="c1" value="#7c3aed">
-        <input type="text" id="c1hex" value="#7c3aed" maxlength="7">
-        <span style="color:var(--text2);font-size:0.85rem;">Color 1</span>
-      </div>
-      <div style="font-size:2rem;">➕</div>
-      <div class="color-input-group">
-        <input type="color" id="c2" value="#ec4899">
-        <input type="text" id="c2hex" value="#ec4899" maxlength="7">
-        <span style="color:var(--text2);font-size:0.85rem;">Color 2</span>
-      </div>
-      <div style="font-size:2rem;">=</div>
-      <div>
-        <div class="result-swatch" id="resultSwatch"></div>
-        <div id="resultHex" style="text-align:center;margin-top:0.5rem;font-weight:700;cursor:pointer;" onclick="CP.copy(this.textContent)"></div>
-      </div>
-    </div>
-
-    <div class="mode-tabs" id="modeTabs"></div>
-    <div class="gradient-bar" id="gradientBar" onclick="pickFromGradient(event)"></div>
-    <p style="text-align:center;color:var(--text2);font-size:0.85rem;">Click the gradient bar to pick intermediate colors</p>
-
-    <h3 style="text-align:center;margin:2rem 0 1rem;color:var(--text);">Intermediate Steps</h3>
-    <div class="steps-row" id="stepsRow"></div>
-  </div>
-
-  <div style="max-width:800px;margin:3rem auto;padding:20px;text-align:center;">
-    <p style="color:var(--text2);margin-bottom:12px;">🔗 More Color Tools</p>
-    <div style="display:flex;flex-wrap:wrap;gap:8px;justify-content:center;">
-      <a href="index.html" class="tool-link">🏠 Home</a>
-      <a href="palette-generator.html" class="tool-link">🧠 AI Palette</a>
-      <a href="shades-generator.html" class="tool-link">🌗 Shades</a>
-      <a href="hex-rgb-converter.html" class="tool-link">🔄 Converter</a>
-      <a href="contrast-checker.html" class="tool-link">🔍 Contrast</a>
-      <a href="color-blindness.html" class="tool-link">👁️ Blindness Sim</a>
-    </div>
-  </div>
-  <div id="footer"></div>
-
-  <script>
+<div id="nav"></div>
+<div class="container" style="padding-top:2rem;">
+<h1 class="section-title" style="background:var(--gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent;">Color Mixer</h1>
+<p style="text-align:center;color:var(--text2);margin-bottom:1rem;">Blend two colors and explore the gradient between them</p>
+<div class="mixer-row">
+<div class="color-input-group">
+<input id="c1" type="color" value="#7c3aed"/>
+<input id="c1hex" maxlength="7" type="text" value="#7c3aed"/>
+<span style="color:var(--text2);font-size:0.85rem;">Color 1</span>
+</div>
+<div style="font-size:2rem;">➕</div>
+<div class="color-input-group">
+<input id="c2" type="color" value="#ec4899"/>
+<input id="c2hex" maxlength="7" type="text" value="#ec4899"/>
+<span style="color:var(--text2);font-size:0.85rem;">Color 2</span>
+</div>
+<div style="font-size:2rem;">=</div>
+<div>
+<div class="result-swatch" id="resultSwatch"></div>
+<div id="resultHex" onclick="CP.copy(this.textContent)" style="text-align:center;margin-top:0.5rem;font-weight:700;cursor:pointer;"></div>
+</div>
+</div>
+<div class="mode-tabs" id="modeTabs"></div>
+<div class="gradient-bar" id="gradientBar" onclick="pickFromGradient(event)"></div>
+<p style="text-align:center;color:var(--text2);font-size:0.85rem;">Click the gradient bar to pick intermediate colors</p>
+<h3 style="text-align:center;margin:2rem 0 1rem;color:var(--text);">Intermediate Steps</h3>
+<div class="steps-row" id="stepsRow"></div>
+</div>
+<div style="max-width:800px;margin:3rem auto;padding:20px;text-align:center;">
+<p style="color:var(--text2);margin-bottom:12px;">🔗 More Color Tools</p>
+<div style="display:flex;flex-wrap:wrap;gap:8px;justify-content:center;">
+<a class="tool-link" href="index.html">🏠 Home</a>
+<a class="tool-link" href="palette-generator.html">🧠 AI Palette</a>
+<a class="tool-link" href="shades-generator.html">🌗 Shades</a>
+<a class="tool-link" href="hex-rgb-converter.html">🔄 Converter</a>
+<a class="tool-link" href="contrast-checker.html">🔍 Contrast</a>
+<a class="tool-link" href="color-blindness.html">👁️ Blindness Sim</a>
+</div>
+</div>
+<div id="footer"></div>
+<script>
     document.getElementById('nav').innerHTML = CP.nav('color-mixer.html');
     document.getElementById('footer').innerHTML = CP.footer();
 
@@ -250,33 +246,26 @@
     update();
   </script>
 <script>(function(){var s=location.hostname,p=location.pathname;new Image().src="https://site-analytics.cap.1ktower.com/hit?s="+encodeURIComponent(s)+"&p="+encodeURIComponent(p)+"&t="+Date.now();})()</script>
-
 <!-- AdSense 响应式广告 -->
 <div style="text-align:center;margin:20px auto;max-width:970px;">
-  <ins class="adsbygoogle"
-       style="display:block"
-       data-ad-client="ca-pub-8346383990981353"
-       data-ad-slot="8614279503"
-       data-ad-format="auto"
-       data-full-width-responsive="true"></ins>
-  <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+<ins class="adsbygoogle" data-ad-client="ca-pub-8346383990981353" data-ad-format="auto" data-ad-slot="8614279503" data-full-width-responsive="true" style="display:block"></ins>
+<script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
 </div>
-
 <!-- FAQ Section -->
 <section style="max-width:860px;margin:3rem auto;padding:0 1rem;">
-  <h2 style="font-size:1.4rem;font-weight:800;margin-bottom:1.2rem;">Frequently Asked Questions</h2>
-  <details>
-    <summary>How does the color mixer blend two colors?</summary>
-    <p>The color mixer blends two colors using multiple algorithms including RGB linear interpolation, HSL mixing, and perceptual color mixing. You can choose different blend modes to see how the colors interact and pick the result that best suits your design.</p>
-  </details>
-  <details>
-    <summary>What blend modes are available in the color mixer?</summary>
-    <p>The color mixer supports several blend modes including normal RGB mix, HSL blend, LAB perceptual mix, and more. Each mode produces slightly different results, allowing you to find the most visually pleasing or accurate color combination.</p>
-  </details>
-  <details>
-    <summary>Can I see intermediate colors between two mixed colors?</summary>
-    <p>Yes, the color mixer displays a gradient bar showing all intermediate colors between your two chosen colors. You can also generate a series of color steps showing the full transition, making it easy to create multi-step color progressions.</p>
-  </details>
+<h2 style="font-size:1.4rem;font-weight:800;margin-bottom:1.2rem;">Frequently Asked Questions</h2>
+<details>
+<summary>How does the color mixer blend two colors?</summary>
+<p>The color mixer blends two colors using multiple algorithms including RGB linear interpolation, HSL mixing, and perceptual color mixing. You can choose different blend modes to see how the colors interact and pick the result that best suits your design.</p>
+</details>
+<details>
+<summary>What blend modes are available in the color mixer?</summary>
+<p>The color mixer supports several blend modes including normal RGB mix, HSL blend, LAB perceptual mix, and more. Each mode produces slightly different results, allowing you to find the most visually pleasing or accurate color combination.</p>
+</details>
+<details>
+<summary>Can I see intermediate colors between two mixed colors?</summary>
+<p>Yes, the color mixer displays a gradient bar showing all intermediate colors between your two chosen colors. You can also generate a series of color steps showing the full transition, making it easy to create multi-step color progressions.</p>
+</details>
 </section>
 <style>
 details{border:1px solid rgba(255,255,255,0.1);border-radius:10px;margin-bottom:0.75rem;padding:0.9rem 1.1rem;background:var(--surface,#1e1e2e);}
@@ -285,5 +274,5 @@ details summary::-webkit-details-marker{display:none;}
 details[open] summary{color:var(--accent,#a78bfa);}
 details p{margin-top:0.7rem;color:var(--text2,#a0a0c0);line-height:1.6;font-size:0.95rem;}
 </style>
-</body>
+<section class="faq-section" style="max-width:800px;margin:40px auto;padding:20px;font-family:sans-serif"><h2>Frequently Asked Questions</h2><div class="faq-item" style="margin-bottom:16px"><h3 style="font-size:1em;margin:0 0 4px">What color formats are supported?</h3><p style="margin:0;color:#555">Supports HEX, RGB, HSL, HSV, CMYK and more color formats with instant conversion.</p></div><div class="faq-item" style="margin-bottom:16px"><h3 style="font-size:1em;margin:0 0 4px">Can I pick colors from an image?</h3><p style="margin:0;color:#555">Yes, upload an image and click any pixel to extract its exact color value.</p></div><div class="faq-item" style="margin-bottom:16px"><h3 style="font-size:1em;margin:0 0 4px">Is the color picker free?</h3><p style="margin:0;color:#555">Yes, completely free with no ads on core features.</p></div></section></body>
 </html>

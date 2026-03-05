@@ -1,21 +1,22 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Color Palette Generator - Free Online Tool | ColorPick</title>
-  <meta name="description" content="Generate beautiful color palettes instantly. Choose complementary, analogous, triadic, or split-complementary color schemes from any base color. Free online tool.">
-  <link rel="canonical" href="https://rorojiao.github.io/colorpick/palette.html">
-  <meta property="og:title" content="Color Palette Generator - Free Online Tool | ColorPick">
-  <meta property="og:description" content="Generate beautiful color palettes instantly. Choose complementary, analogous, triadic, or split-complementary color schemes from any base color. Free online tool.">
-  <meta property="og:url" content="https://rorojiao.github.io/colorpick/palette.html">
-  <meta property="og:type" content="website">
-  <meta property="og:image" content="https://rorojiao.github.io/colorpick/og-image.svg">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Color Palette Generator - Free Online Tool | ColorPick">
-  <meta name="twitter:description" content="Generate beautiful color palettes instantly. Choose complementary, analogous, triadic, or split-complementary color schemes from any base color. Free online tool.">
-  <meta name="twitter:image" content="https://rorojiao.github.io/colorpick/og-image.svg">
-  <script type="application/ld+json">
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Color Palette Generator - Free Online Tool | ColorPick</title>
+<meta content="Generate beautiful color palettes instantly. Choose complementary, analogous, triadic, or split-complementary color schemes from any base color. Free online tool." name="description"/>
+<link href="https://rorojiao.github.io/colorpick/palette.html" rel="canonical"/>
+<meta content="Color Palette Generator - Free Online Tool | ColorPick" property="og:title"/>
+<meta content="Generate beautiful color palettes instantly. Choose complementary, analogous, triadic, or split-complementary color schemes from any base color. Free online tool." property="og:description"/>
+<meta content="https://rorojiao.github.io/colorpick/palette.html" property="og:url"/>
+<meta content="website" property="og:type"/>
+<meta content="https://rorojiao.github.io/colorpick/og-image.svg" property="og:image"/>
+<meta content="summary_large_image" name="twitter:card"/>
+<meta content="Color Palette Generator - Free Online Tool | ColorPick" name="twitter:title"/>
+<meta content="Generate beautiful color palettes instantly. Choose complementary, analogous, triadic, or split-complementary color schemes from any base color. Free online tool." name="twitter:description"/>
+<meta content="https://rorojiao.github.io/colorpick/og-image.svg" name="twitter:image"/>
+<script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "SoftwareApplication",
@@ -28,7 +29,7 @@
     "provider": { "@type": "Organization", "name": "ColorPick", "url": "https://rorojiao.github.io/colorpick/" }
   }
   </script>
-  <script type="application/ld+json">
+<script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "FAQPage",
@@ -60,7 +61,7 @@
     ]
   }
   </script>
-  <script type="application/ld+json">
+<script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
@@ -80,9 +81,9 @@
     ]
   }
   </script>
-  <link rel="stylesheet" href="style.css">
-  <script src="colorpick.js"></script>
-  <style>
+<link href="style.css" rel="stylesheet"/>
+<script src="colorpick.js"></script>
+<style>
     .input-row { display: flex; gap: 1rem; align-items: center; justify-content: center; margin: 2rem 0; flex-wrap: wrap; }
     .scheme { margin-bottom: 2.5rem; }
     .scheme h3 { text-align: center; margin-bottom: 1rem; color: var(--text2); font-size: 1rem; text-transform: uppercase; letter-spacing: 2px; }
@@ -103,35 +104,31 @@
       transform: translate(-50%, -50%);
     }
   </style>
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8346383990981353" crossorigin="anonymous"></script>
+<script async="" crossorigin="anonymous" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8346383990981353"></script>
 <script>
   (adsbygoogle = window.adsbygoogle || []).push({
     google_ad_client: "ca-pub-8346383990981353",
     enable_page_level_ads: true
   });
 </script>
-</head>
+<meta content="ColorPick" property="og:site_name"/></head>
 <body>
-  <div id="nav"></div>
-  <div class="container">
-    <h1 class="section-title" style="margin-top:2rem">Palette Generator</h1>
-
-    <div class="input-row">
-      <input type="color" id="baseColor" value="#7c3aed" oninput="generate()">
-      <input type="text" id="baseHex" value="#7c3aed" placeholder="#hex" oninput="syncHex()" style="width:120px;text-align:center;font-weight:700">
-      <button class="btn btn-primary" onclick="randomBase()">🎲 Random</button>
-    </div>
-
-    <div class="visual-wheel">
-      <canvas id="miniWheel" width="200" height="200"></canvas>
-      <div id="dots"></div>
-    </div>
-
-    <div id="schemes"></div>
-  </div>
-  <div id="footer"></div>
-
-  <script>
+<div id="nav"></div>
+<div class="container">
+<h1 class="section-title" style="margin-top:2rem">Palette Generator</h1>
+<div class="input-row">
+<input id="baseColor" oninput="generate()" type="color" value="#7c3aed"/>
+<input id="baseHex" oninput="syncHex()" placeholder="#hex" style="width:120px;text-align:center;font-weight:700" type="text" value="#7c3aed"/>
+<button class="btn btn-primary" onclick="randomBase()">🎲 Random</button>
+</div>
+<div class="visual-wheel">
+<canvas height="200" id="miniWheel" width="200"></canvas>
+<div id="dots"></div>
+</div>
+<div id="schemes"></div>
+</div>
+<div id="footer"></div>
+<script>
     document.getElementById('nav').innerHTML = CP.nav('palette.html');
     document.getElementById('footer').innerHTML = CP.footer();
 
@@ -215,61 +212,53 @@
   </script>
 <!-- AADS Crypto Ad -->
 <div id="aads-ad" style="text-align:center;margin:20px auto;max-width:728px;">
-  <!-- Ad unit will be inserted after AADS registration -->
-
-  <iframe data-aa="2427662" src="//acceptable.a-ads.com/2427662/?size=Adaptive" style="border:0; padding:0; width:100%; height:auto; min-height:60px; overflow:hidden; display:block; margin:auto;"></iframe>
+<!-- Ad unit will be inserted after AADS registration -->
+<iframe data-aa="2427662" src="//acceptable.a-ads.com/2427662/?size=Adaptive" style="border:0; padding:0; width:100%; height:auto; min-height:60px; overflow:hidden; display:block; margin:auto;"></iframe>
 </div>
 <div class="tip-jar" style="text-align:center;margin:2rem auto;padding:1.5rem;background:#f8f9fa;border-radius:12px;max-width:480px">
-      <h3>☕ Support Us</h3>
-      <p>If you find this useful, consider a small tip!</p>
-      <div style="margin:0.5rem 0"><span style="margin:0 4px;padding:2px 8px;background:#e3e8ef;border-radius:4px;font-size:0.85rem">ETH</span><span style="margin:0 4px;padding:2px 8px;background:#e3e8ef;border-radius:4px;font-size:0.85rem">USDC</span><span style="margin:0 4px;padding:2px 8px;background:#e3e8ef;border-radius:4px;font-size:0.85rem">BSC</span><span style="margin:0 4px;padding:2px 8px;background:#e3e8ef;border-radius:4px;font-size:0.85rem">Polygon</span></div>
-      <div style="word-break:break-all;background:#fff;padding:0.75rem;border-radius:8px;font-family:monospace;font-size:0.8rem;cursor:pointer;border:1px solid #ddd" onclick="navigator.clipboard.writeText('0xEeD903787Cb86bcCc17777E5C7d10A4c2De43823').then(()=>this.textContent='✓ Copied!')">0xEeD903787Cb86bcCc17777E5C7d10A4c2De43823</div>
-    </div>
+<h3>☕ Support Us</h3>
+<p>If you find this useful, consider a small tip!</p>
+<div style="margin:0.5rem 0"><span style="margin:0 4px;padding:2px 8px;background:#e3e8ef;border-radius:4px;font-size:0.85rem">ETH</span><span style="margin:0 4px;padding:2px 8px;background:#e3e8ef;border-radius:4px;font-size:0.85rem">USDC</span><span style="margin:0 4px;padding:2px 8px;background:#e3e8ef;border-radius:4px;font-size:0.85rem">BSC</span><span style="margin:0 4px;padding:2px 8px;background:#e3e8ef;border-radius:4px;font-size:0.85rem">Polygon</span></div>
+<div onclick="navigator.clipboard.writeText('0xEeD903787Cb86bcCc17777E5C7d10A4c2De43823').then(()=&gt;this.textContent='✓ Copied!')" style="word-break:break-all;background:#fff;padding:0.75rem;border-radius:8px;font-family:monospace;font-size:0.8rem;cursor:pointer;border:1px solid #ddd">0xEeD903787Cb86bcCc17777E5C7d10A4c2De43823</div>
+</div>
 <!-- internal-links-start -->
 <div style="max-width:800px;margin:40px auto;padding:20px;text-align:center;border-top:1px solid #eee;">
-  <p style="font-size:14px;color:#666;margin-bottom:12px;">🔗 More Free Tools</p>
-  <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:8px;">
-    <a href="https://rorojiao.github.io/devtoolbox/" target="_blank" rel="noopener" style="display:inline-block;padding:6px 12px;background:#f5f5f5;border-radius:16px;text-decoration:none;color:#333;font-size:13px;">🛠️ DevToolBox</a>
-    <a href="https://rorojiao.github.io/seolite/" target="_blank" rel="noopener" style="display:inline-block;padding:6px 12px;background:#f5f5f5;border-radius:16px;text-decoration:none;color:#333;font-size:13px;">📊 SEOLite</a>
-    <a href="https://rorojiao.github.io/texttoolkit/" target="_blank" rel="noopener" style="display:inline-block;padding:6px 12px;background:#f5f5f5;border-radius:16px;text-decoration:none;color:#333;font-size:13px;">📝 TextToolKit</a>
-    <a href="https://rorojiao.github.io/qrcraft/" target="_blank" rel="noopener" style="display:inline-block;padding:6px 12px;background:#f5f5f5;border-radius:16px;text-decoration:none;color:#333;font-size:13px;">📱 QRCraft</a>
-    <a href="https://rorojiao.github.io/passwordfort/" target="_blank" rel="noopener" style="display:inline-block;padding:6px 12px;background:#f5f5f5;border-radius:16px;text-decoration:none;color:#333;font-size:13px;">🔐 PasswordFort</a>
-    <a href="https://rorojiao.github.io/mysticfate/" target="_blank" rel="noopener" style="display:inline-block;padding:6px 12px;background:#f5f5f5;border-radius:16px;text-decoration:none;color:#333;font-size:13px;">🌙 MysticFate</a>
-    <a href="https://rorojiao.github.io/calcsmart/" target="_blank" rel="noopener" style="display:inline-block;padding:6px 12px;background:#f5f5f5;border-radius:16px;text-decoration:none;color:#333;font-size:13px;">🧮 CalcSmart</a>
-    <a href="https://rorojiao.github.io/healthcalc/" target="_blank" rel="noopener" style="display:inline-block;padding:6px 12px;background:#f5f5f5;border-radius:16px;text-decoration:none;color:#333;font-size:13px;">💪 HealthCalc</a>  </div>
+<p style="font-size:14px;color:#666;margin-bottom:12px;">🔗 More Free Tools</p>
+<div style="display:flex;flex-wrap:wrap;justify-content:center;gap:8px;">
+<a href="https://rorojiao.github.io/devtoolbox/" rel="noopener" style="display:inline-block;padding:6px 12px;background:#f5f5f5;border-radius:16px;text-decoration:none;color:#333;font-size:13px;" target="_blank">🛠️ DevToolBox</a>
+<a href="https://rorojiao.github.io/seolite/" rel="noopener" style="display:inline-block;padding:6px 12px;background:#f5f5f5;border-radius:16px;text-decoration:none;color:#333;font-size:13px;" target="_blank">📊 SEOLite</a>
+<a href="https://rorojiao.github.io/texttoolkit/" rel="noopener" style="display:inline-block;padding:6px 12px;background:#f5f5f5;border-radius:16px;text-decoration:none;color:#333;font-size:13px;" target="_blank">📝 TextToolKit</a>
+<a href="https://rorojiao.github.io/qrcraft/" rel="noopener" style="display:inline-block;padding:6px 12px;background:#f5f5f5;border-radius:16px;text-decoration:none;color:#333;font-size:13px;" target="_blank">📱 QRCraft</a>
+<a href="https://rorojiao.github.io/passwordfort/" rel="noopener" style="display:inline-block;padding:6px 12px;background:#f5f5f5;border-radius:16px;text-decoration:none;color:#333;font-size:13px;" target="_blank">🔐 PasswordFort</a>
+<a href="https://rorojiao.github.io/mysticfate/" rel="noopener" style="display:inline-block;padding:6px 12px;background:#f5f5f5;border-radius:16px;text-decoration:none;color:#333;font-size:13px;" target="_blank">🌙 MysticFate</a>
+<a href="https://rorojiao.github.io/calcsmart/" rel="noopener" style="display:inline-block;padding:6px 12px;background:#f5f5f5;border-radius:16px;text-decoration:none;color:#333;font-size:13px;" target="_blank">🧮 CalcSmart</a>
+<a href="https://rorojiao.github.io/healthcalc/" rel="noopener" style="display:inline-block;padding:6px 12px;background:#f5f5f5;border-radius:16px;text-decoration:none;color:#333;font-size:13px;" target="_blank">💪 HealthCalc</a> </div>
 </div>
 <!-- internal-links-end -->
 <!-- Analytics -->
 <script>
 (function(){var s=location.hostname,p=location.pathname;new Image().src="https://site-analytics.cap.1ktower.com/hit?s="+encodeURIComponent(s)+"&p="+encodeURIComponent(p)+"&t="+Date.now();})()
 </script>
-
 <!-- AdSense 响应式广告 -->
 <div style="text-align:center;margin:20px auto;max-width:970px;">
-  <ins class="adsbygoogle"
-       style="display:block"
-       data-ad-client="ca-pub-8346383990981353"
-       data-ad-slot="8614279503"
-       data-ad-format="auto"
-       data-full-width-responsive="true"></ins>
-  <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+<ins class="adsbygoogle" data-ad-client="ca-pub-8346383990981353" data-ad-format="auto" data-ad-slot="8614279503" data-full-width-responsive="true" style="display:block"></ins>
+<script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
 </div>
-
 <!-- FAQ Section -->
 <section style="max-width:860px;margin:3rem auto;padding:0 1rem;">
-  <h2 style="font-size:1.4rem;font-weight:800;margin-bottom:1.2rem;">Frequently Asked Questions</h2>
-  <details>
-    <summary>What color scheme types can this palette generator create?</summary>
-    <p>The palette generator supports complementary, analogous, triadic, split-complementary, and monochromatic color schemes. Each scheme is generated automatically from your chosen base color.</p>
-  </details>
-  <details>
-    <summary>How do I copy colors from the generated palette?</summary>
-    <p>Click on any color swatch in the generated palette to copy its HEX code to your clipboard. You can also copy RGB or HSL values by clicking the respective format shown below each swatch.</p>
-  </details>
-  <details>
-    <summary>Can I export the generated color palette?</summary>
-    <p>Yes, you can copy individual HEX codes by clicking any swatch. The palette is also shareable by copying the page URL, which preserves your base color selection for easy sharing with team members.</p>
-  </details>
+<h2 style="font-size:1.4rem;font-weight:800;margin-bottom:1.2rem;">Frequently Asked Questions</h2>
+<details>
+<summary>What color scheme types can this palette generator create?</summary>
+<p>The palette generator supports complementary, analogous, triadic, split-complementary, and monochromatic color schemes. Each scheme is generated automatically from your chosen base color.</p>
+</details>
+<details>
+<summary>How do I copy colors from the generated palette?</summary>
+<p>Click on any color swatch in the generated palette to copy its HEX code to your clipboard. You can also copy RGB or HSL values by clicking the respective format shown below each swatch.</p>
+</details>
+<details>
+<summary>Can I export the generated color palette?</summary>
+<p>Yes, you can copy individual HEX codes by clicking any swatch. The palette is also shareable by copying the page URL, which preserves your base color selection for easy sharing with team members.</p>
+</details>
 </section>
 <style>
 details{border:1px solid rgba(255,255,255,0.1);border-radius:10px;margin-bottom:0.75rem;padding:0.9rem 1.1rem;background:var(--surface,#1e1e2e);}
@@ -278,5 +267,5 @@ details summary::-webkit-details-marker{display:none;}
 details[open] summary{color:var(--accent,#a78bfa);}
 details p{margin-top:0.7rem;color:var(--text2,#a0a0c0);line-height:1.6;font-size:0.95rem;}
 </style>
-</body>
+<section class="faq-section" style="max-width:800px;margin:40px auto;padding:20px;font-family:sans-serif"><h2>Frequently Asked Questions</h2><div class="faq-item" style="margin-bottom:16px"><h3 style="font-size:1em;margin:0 0 4px">What color formats are supported?</h3><p style="margin:0;color:#555">Supports HEX, RGB, HSL, HSV, CMYK and more color formats with instant conversion.</p></div><div class="faq-item" style="margin-bottom:16px"><h3 style="font-size:1em;margin:0 0 4px">Can I pick colors from an image?</h3><p style="margin:0;color:#555">Yes, upload an image and click any pixel to extract its exact color value.</p></div><div class="faq-item" style="margin-bottom:16px"><h3 style="font-size:1em;margin:0 0 4px">Is the color picker free?</h3><p style="margin:0;color:#555">Yes, completely free with no ads on core features.</p></div></section></body>
 </html>

@@ -1,21 +1,22 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Color Picker, Palette Generator & Color Tools - Free Online | ColorPick</title>
-  <meta name="description" content="Free online color tools for designers and developers. Color picker, palette generator, WCAG contrast checker, shades generator, HEX RGB converter and more.">
-  <link rel="canonical" href="https://rorojiao.github.io/colorpick/">
-  <meta property="og:title" content="Color Picker, Palette Generator & Color Tools - Free Online | ColorPick">
-  <meta property="og:description" content="Free online color tools for designers and developers. Color picker, palette generator, WCAG contrast checker, shades generator, HEX RGB converter and more.">
-  <meta property="og:url" content="https://rorojiao.github.io/colorpick/">
-  <meta property="og:type" content="website">
-  <meta property="og:image" content="https://rorojiao.github.io/colorpick/og-image.svg">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Color Picker, Palette Generator & Color Tools - Free Online | ColorPick">
-  <meta name="twitter:description" content="Free online color tools for designers and developers. Color picker, palette generator, WCAG contrast checker, shades generator, HEX RGB converter and more.">
-  <meta name="twitter:image" content="https://rorojiao.github.io/colorpick/og-image.svg">
-  <script type="application/ld+json">
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Color Picker, Palette Generator &amp; Color Tools - Free Online | ColorPick</title>
+<meta content="Free online color tools for designers and developers. Color picker, palette generator, WCAG contrast checker, shades generator, HEX RGB converter and more." name="description"/>
+<link href="https://rorojiao.github.io/colorpick/" rel="canonical"/>
+<meta content="Color Picker, Palette Generator &amp; Color Tools - Free Online | ColorPick" property="og:title"/>
+<meta content="Free online color tools for designers and developers. Color picker, palette generator, WCAG contrast checker, shades generator, HEX RGB converter and more." property="og:description"/>
+<meta content="https://rorojiao.github.io/colorpick/" property="og:url"/>
+<meta content="website" property="og:type"/>
+<meta content="https://rorojiao.github.io/colorpick/og-image.svg" property="og:image"/>
+<meta content="summary_large_image" name="twitter:card"/>
+<meta content="Color Picker, Palette Generator &amp; Color Tools - Free Online | ColorPick" name="twitter:title"/>
+<meta content="Free online color tools for designers and developers. Color picker, palette generator, WCAG contrast checker, shades generator, HEX RGB converter and more." name="twitter:description"/>
+<meta content="https://rorojiao.github.io/colorpick/og-image.svg" name="twitter:image"/>
+<script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "SoftwareApplication",
@@ -28,7 +29,7 @@
     "provider": { "@type": "Organization", "name": "ColorPick", "url": "https://rorojiao.github.io/colorpick/" }
   }
   </script>
-  <script type="application/ld+json">
+<script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "FAQPage",
@@ -60,7 +61,7 @@
     ]
   }
   </script>
-  <script type="application/ld+json">
+<script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
@@ -74,83 +75,78 @@
     ]
   }
   </script>
-
-  <link rel="stylesheet" href="style.css">
-  <script src="colorpick.js"></script>
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8346383990981353" crossorigin="anonymous"></script>
+<link href="style.css" rel="stylesheet"/>
+<script src="colorpick.js"></script>
+<script async="" crossorigin="anonymous" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8346383990981353"></script>
 <script>
   (adsbygoogle = window.adsbygoogle || []).push({
     google_ad_client: "ca-pub-8346383990981353",
     enable_page_level_ads: true
   });
 </script>
-</head>
+<meta content="ColorPick" property="og:site_name"/></head>
 <body>
-  <div id="nav"></div>
-
-  <div class="hero">
-    <h1>Design with Color</h1>
-    <p>Free tools to pick, generate, and validate beautiful color palettes</p>
-    <div style="margin-top:2rem">
-      <button class="btn btn-primary" onclick="generate()">🎲 Generate Palette</button>
-    </div>
-  </div>
-
-  <div class="container">
-    <div id="palette" class="palette-row" style="margin-bottom:3rem"></div>
-
-    <h2 class="section-title">Tools</h2>
-    <div class="tools-grid">
-      <a href="picker.html" class="tool-card">
-        <div class="icon">🎯</div>
-        <h3>Color Picker</h3>
-        <p>Pick any color with HSL, RGB, or HEX. Color wheel included.</p>
-      </a>
-      <a href="palette.html" class="tool-card">
-        <div class="icon">🎨</div>
-        <h3>Palette Generator</h3>
-        <p>Generate complementary, analogous, triadic & split-complementary schemes.</p>
-      </a>
-      <a href="contrast.html" class="tool-card">
-        <div class="icon">🔍</div>
-        <h3>Contrast Checker</h3>
-        <p>Check WCAG AA/AAA compliance for text and background combinations.</p>
-      </a>
-      <a href="palette-generator.html" class="tool-card">
-        <div class="icon">🧠</div>
-        <h3>AI Palette Generator</h3>
-        <p>Generate harmonious palettes from a base color with lock & regenerate.</p>
-      </a>
-      <a href="color-mixer.html" class="tool-card">
-        <div class="icon">🎨</div>
-        <h3>Color Mixer</h3>
-        <p>Blend two colors with multiple mix modes and gradient preview.</p>
-      </a>
-      <a href="shades-generator.html" class="tool-card">
-        <div class="icon">🌗</div>
-        <h3>Shades Generator</h3>
-        <p>Generate 10 shades from lightest to darkest for any color.</p>
-      </a>
-      <a href="hex-rgb-converter.html" class="tool-card">
-        <div class="icon">🔄</div>
-        <h3>HEX/RGB/HSL Converter</h3>
-        <p>Convert between HEX, RGB, and HSL formats with live preview.</p>
-      </a>
-      <a href="contrast-checker.html" class="tool-card">
-        <div class="icon">♿</div>
-        <h3>WCAG Contrast Checker</h3>
-        <p>Advanced WCAG 2.1 contrast checker with AA/AAA compliance badges.</p>
-      </a>
-      <a href="color-blindness.html" class="tool-card">
-        <div class="icon">👁️</div>
-        <h3>Color Blindness Simulator</h3>
-        <p>Simulate 8 types of color blindness on images or color swatches.</p>
-      </a>
-    </div>
-  </div>
-
-  <div id="footer"></div>
-  <script>
+<div id="nav"></div>
+<div class="hero">
+<h1>Design with Color</h1>
+<p>Free tools to pick, generate, and validate beautiful color palettes</p>
+<div style="margin-top:2rem">
+<button class="btn btn-primary" onclick="generate()">🎲 Generate Palette</button>
+</div>
+</div>
+<div class="container">
+<div class="palette-row" id="palette" style="margin-bottom:3rem"></div>
+<h2 class="section-title">Tools</h2>
+<div class="tools-grid">
+<a class="tool-card" href="picker.html">
+<div class="icon">🎯</div>
+<h3>Color Picker</h3>
+<p>Pick any color with HSL, RGB, or HEX. Color wheel included.</p>
+</a>
+<a class="tool-card" href="palette.html">
+<div class="icon">🎨</div>
+<h3>Palette Generator</h3>
+<p>Generate complementary, analogous, triadic &amp; split-complementary schemes.</p>
+</a>
+<a class="tool-card" href="contrast.html">
+<div class="icon">🔍</div>
+<h3>Contrast Checker</h3>
+<p>Check WCAG AA/AAA compliance for text and background combinations.</p>
+</a>
+<a class="tool-card" href="palette-generator.html">
+<div class="icon">🧠</div>
+<h3>AI Palette Generator</h3>
+<p>Generate harmonious palettes from a base color with lock &amp; regenerate.</p>
+</a>
+<a class="tool-card" href="color-mixer.html">
+<div class="icon">🎨</div>
+<h3>Color Mixer</h3>
+<p>Blend two colors with multiple mix modes and gradient preview.</p>
+</a>
+<a class="tool-card" href="shades-generator.html">
+<div class="icon">🌗</div>
+<h3>Shades Generator</h3>
+<p>Generate 10 shades from lightest to darkest for any color.</p>
+</a>
+<a class="tool-card" href="hex-rgb-converter.html">
+<div class="icon">🔄</div>
+<h3>HEX/RGB/HSL Converter</h3>
+<p>Convert between HEX, RGB, and HSL formats with live preview.</p>
+</a>
+<a class="tool-card" href="contrast-checker.html">
+<div class="icon">♿</div>
+<h3>WCAG Contrast Checker</h3>
+<p>Advanced WCAG 2.1 contrast checker with AA/AAA compliance badges.</p>
+</a>
+<a class="tool-card" href="color-blindness.html">
+<div class="icon">👁️</div>
+<h3>Color Blindness Simulator</h3>
+<p>Simulate 8 types of color blindness on images or color swatches.</p>
+</a>
+</div>
+</div>
+<div id="footer"></div>
+<script>
     document.getElementById('nav').innerHTML = CP.nav('index.html');
     document.getElementById('footer').innerHTML = CP.footer();
 
@@ -167,76 +163,67 @@
   </script>
 <!-- AADS Crypto Ad -->
 <div id="aads-ad" style="text-align:center;margin:20px auto;max-width:728px;">
-  <!-- Ad unit will be inserted after AADS registration -->
-
-  <iframe data-aa="2427662" src="//acceptable.a-ads.com/2427662/?size=Adaptive" style="border:0; padding:0; width:100%; height:auto; min-height:60px; overflow:hidden; display:block; margin:auto;"></iframe>
+<!-- Ad unit will be inserted after AADS registration -->
+<iframe data-aa="2427662" src="//acceptable.a-ads.com/2427662/?size=Adaptive" style="border:0; padding:0; width:100%; height:auto; min-height:60px; overflow:hidden; display:block; margin:auto;"></iframe>
 </div>
 <div class="tip-jar" style="text-align:center;margin:2rem auto;padding:1.5rem;background:#f8f9fa;border-radius:12px;max-width:480px">
-      <h3>☕ Support Us</h3>
-      <p>If you find this useful, consider a small tip!</p>
-      <div style="margin:0.5rem 0"><span style="margin:0 4px;padding:2px 8px;background:#e3e8ef;border-radius:4px;font-size:0.85rem">ETH</span><span style="margin:0 4px;padding:2px 8px;background:#e3e8ef;border-radius:4px;font-size:0.85rem">USDC</span><span style="margin:0 4px;padding:2px 8px;background:#e3e8ef;border-radius:4px;font-size:0.85rem">BSC</span><span style="margin:0 4px;padding:2px 8px;background:#e3e8ef;border-radius:4px;font-size:0.85rem">Polygon</span></div>
-      <div style="word-break:break-all;background:#fff;padding:0.75rem;border-radius:8px;font-family:monospace;font-size:0.8rem;cursor:pointer;border:1px solid #ddd" onclick="navigator.clipboard.writeText('0xEeD903787Cb86bcCc17777E5C7d10A4c2De43823').then(()=>this.textContent='✓ Copied!')">0xEeD903787Cb86bcCc17777E5C7d10A4c2De43823</div>
-    </div>
-<div class="more-tools" style="max-width:800px;margin:40px auto;padding:20px;background:#f8f9fa;border-radius:12px;text-align:center">
-  <h3 style="margin-bottom:12px">🔗 More Free Tools</h3>
-  <div style="display:flex;flex-wrap:wrap;gap:8px;justify-content:center">
-    <a href="https://rorojiao.github.io/devtoolbox/" style="padding:6px 14px;background:#fff;border-radius:20px;text-decoration:none;color:#333;border:1px solid #e0e0e0;font-size:14px">🛠️ DevToolbox</a>
-    <a href="https://rorojiao.github.io/texttoolkit/" style="padding:6px 14px;background:#fff;border-radius:20px;text-decoration:none;color:#333;border:1px solid #e0e0e0;font-size:14px">📝 TextToolkit</a>
-    <a href="https://rorojiao.github.io/seolite/" style="padding:6px 14px;background:#fff;border-radius:20px;text-decoration:none;color:#333;border:1px solid #e0e0e0;font-size:14px">🔍 SEOLite</a>
-    <a href="https://rorojiao.github.io/passwordfort/" style="padding:6px 14px;background:#fff;border-radius:20px;text-decoration:none;color:#333;border:1px solid #e0e0e0;font-size:14px">🔐 PasswordFort</a>
-    <a href="https://rorojiao.github.io/qrcraft/" style="padding:6px 14px;background:#fff;border-radius:20px;text-decoration:none;color:#333;border:1px solid #e0e0e0;font-size:14px">📱 QRCraft</a>
-    <a href="https://rorojiao.github.io/cryptogauge/" style="padding:6px 14px;background:#fff;border-radius:20px;text-decoration:none;color:#333;border:1px solid #e0e0e0;font-size:14px">📊 CryptoGauge</a>
-    <a href="https://rorojiao.github.io/calcsmart/" style="padding:6px 14px;background:#fff;border-radius:20px;text-decoration:none;color:#333;border:1px solid #e0e0e0;font-size:14px">🧮 CalcSmart</a>
-    <a href="https://rorojiao.github.io/mysticfate/" style="padding:6px 14px;background:#fff;border-radius:20px;text-decoration:none;color:#333;border:1px solid #e0e0e0;font-size:14px">🌙 MysticFate</a>
-    <a href="https://rorojiao.github.io/psychetest/" style="padding:6px 14px;background:#fff;border-radius:20px;text-decoration:none;color:#333;border:1px solid #e0e0e0;font-size:14px">🧠 PsycheTest</a>
-  </div>
+<h3>☕ Support Us</h3>
+<p>If you find this useful, consider a small tip!</p>
+<div style="margin:0.5rem 0"><span style="margin:0 4px;padding:2px 8px;background:#e3e8ef;border-radius:4px;font-size:0.85rem">ETH</span><span style="margin:0 4px;padding:2px 8px;background:#e3e8ef;border-radius:4px;font-size:0.85rem">USDC</span><span style="margin:0 4px;padding:2px 8px;background:#e3e8ef;border-radius:4px;font-size:0.85rem">BSC</span><span style="margin:0 4px;padding:2px 8px;background:#e3e8ef;border-radius:4px;font-size:0.85rem">Polygon</span></div>
+<div onclick="navigator.clipboard.writeText('0xEeD903787Cb86bcCc17777E5C7d10A4c2De43823').then(()=&gt;this.textContent='✓ Copied!')" style="word-break:break-all;background:#fff;padding:0.75rem;border-radius:8px;font-family:monospace;font-size:0.8rem;cursor:pointer;border:1px solid #ddd">0xEeD903787Cb86bcCc17777E5C7d10A4c2De43823</div>
 </div>
-
+<div class="more-tools" style="max-width:800px;margin:40px auto;padding:20px;background:#f8f9fa;border-radius:12px;text-align:center">
+<h3 style="margin-bottom:12px">🔗 More Free Tools</h3>
+<div style="display:flex;flex-wrap:wrap;gap:8px;justify-content:center">
+<a href="https://rorojiao.github.io/devtoolbox/" style="padding:6px 14px;background:#fff;border-radius:20px;text-decoration:none;color:#333;border:1px solid #e0e0e0;font-size:14px">🛠️ DevToolbox</a>
+<a href="https://rorojiao.github.io/texttoolkit/" style="padding:6px 14px;background:#fff;border-radius:20px;text-decoration:none;color:#333;border:1px solid #e0e0e0;font-size:14px">📝 TextToolkit</a>
+<a href="https://rorojiao.github.io/seolite/" style="padding:6px 14px;background:#fff;border-radius:20px;text-decoration:none;color:#333;border:1px solid #e0e0e0;font-size:14px">🔍 SEOLite</a>
+<a href="https://rorojiao.github.io/passwordfort/" style="padding:6px 14px;background:#fff;border-radius:20px;text-decoration:none;color:#333;border:1px solid #e0e0e0;font-size:14px">🔐 PasswordFort</a>
+<a href="https://rorojiao.github.io/qrcraft/" style="padding:6px 14px;background:#fff;border-radius:20px;text-decoration:none;color:#333;border:1px solid #e0e0e0;font-size:14px">📱 QRCraft</a>
+<a href="https://rorojiao.github.io/cryptogauge/" style="padding:6px 14px;background:#fff;border-radius:20px;text-decoration:none;color:#333;border:1px solid #e0e0e0;font-size:14px">📊 CryptoGauge</a>
+<a href="https://rorojiao.github.io/calcsmart/" style="padding:6px 14px;background:#fff;border-radius:20px;text-decoration:none;color:#333;border:1px solid #e0e0e0;font-size:14px">🧮 CalcSmart</a>
+<a href="https://rorojiao.github.io/mysticfate/" style="padding:6px 14px;background:#fff;border-radius:20px;text-decoration:none;color:#333;border:1px solid #e0e0e0;font-size:14px">🌙 MysticFate</a>
+<a href="https://rorojiao.github.io/psychetest/" style="padding:6px 14px;background:#fff;border-radius:20px;text-decoration:none;color:#333;border:1px solid #e0e0e0;font-size:14px">🧠 PsycheTest</a>
+</div>
+</div>
 <!-- internal-links-start -->
 <div style="max-width:800px;margin:40px auto;padding:20px;text-align:center;border-top:1px solid #eee;">
-  <p style="font-size:14px;color:#666;margin-bottom:12px;">🔗 More Free Tools</p>
-  <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:8px;">
-    <a href="https://rorojiao.github.io/devtoolbox/" target="_blank" rel="noopener" style="display:inline-block;padding:6px 12px;background:#f5f5f5;border-radius:16px;text-decoration:none;color:#333;font-size:13px;">🛠️ DevToolBox</a>
-    <a href="https://rorojiao.github.io/seolite/" target="_blank" rel="noopener" style="display:inline-block;padding:6px 12px;background:#f5f5f5;border-radius:16px;text-decoration:none;color:#333;font-size:13px;">📊 SEOLite</a>
-    <a href="https://rorojiao.github.io/texttoolkit/" target="_blank" rel="noopener" style="display:inline-block;padding:6px 12px;background:#f5f5f5;border-radius:16px;text-decoration:none;color:#333;font-size:13px;">📝 TextToolKit</a>
-    <a href="https://rorojiao.github.io/qrcraft/" target="_blank" rel="noopener" style="display:inline-block;padding:6px 12px;background:#f5f5f5;border-radius:16px;text-decoration:none;color:#333;font-size:13px;">📱 QRCraft</a>
-    <a href="https://rorojiao.github.io/passwordfort/" target="_blank" rel="noopener" style="display:inline-block;padding:6px 12px;background:#f5f5f5;border-radius:16px;text-decoration:none;color:#333;font-size:13px;">🔐 PasswordFort</a>
-    <a href="https://rorojiao.github.io/mysticfate/" target="_blank" rel="noopener" style="display:inline-block;padding:6px 12px;background:#f5f5f5;border-radius:16px;text-decoration:none;color:#333;font-size:13px;">🌙 MysticFate</a>
-    <a href="https://rorojiao.github.io/calcsmart/" target="_blank" rel="noopener" style="display:inline-block;padding:6px 12px;background:#f5f5f5;border-radius:16px;text-decoration:none;color:#333;font-size:13px;">🧮 CalcSmart</a>
-    <a href="https://rorojiao.github.io/healthcalc/" target="_blank" rel="noopener" style="display:inline-block;padding:6px 12px;background:#f5f5f5;border-radius:16px;text-decoration:none;color:#333;font-size:13px;">💪 HealthCalc</a>  </div>
+<p style="font-size:14px;color:#666;margin-bottom:12px;">🔗 More Free Tools</p>
+<div style="display:flex;flex-wrap:wrap;justify-content:center;gap:8px;">
+<a href="https://rorojiao.github.io/devtoolbox/" rel="noopener" style="display:inline-block;padding:6px 12px;background:#f5f5f5;border-radius:16px;text-decoration:none;color:#333;font-size:13px;" target="_blank">🛠️ DevToolBox</a>
+<a href="https://rorojiao.github.io/seolite/" rel="noopener" style="display:inline-block;padding:6px 12px;background:#f5f5f5;border-radius:16px;text-decoration:none;color:#333;font-size:13px;" target="_blank">📊 SEOLite</a>
+<a href="https://rorojiao.github.io/texttoolkit/" rel="noopener" style="display:inline-block;padding:6px 12px;background:#f5f5f5;border-radius:16px;text-decoration:none;color:#333;font-size:13px;" target="_blank">📝 TextToolKit</a>
+<a href="https://rorojiao.github.io/qrcraft/" rel="noopener" style="display:inline-block;padding:6px 12px;background:#f5f5f5;border-radius:16px;text-decoration:none;color:#333;font-size:13px;" target="_blank">📱 QRCraft</a>
+<a href="https://rorojiao.github.io/passwordfort/" rel="noopener" style="display:inline-block;padding:6px 12px;background:#f5f5f5;border-radius:16px;text-decoration:none;color:#333;font-size:13px;" target="_blank">🔐 PasswordFort</a>
+<a href="https://rorojiao.github.io/mysticfate/" rel="noopener" style="display:inline-block;padding:6px 12px;background:#f5f5f5;border-radius:16px;text-decoration:none;color:#333;font-size:13px;" target="_blank">🌙 MysticFate</a>
+<a href="https://rorojiao.github.io/calcsmart/" rel="noopener" style="display:inline-block;padding:6px 12px;background:#f5f5f5;border-radius:16px;text-decoration:none;color:#333;font-size:13px;" target="_blank">🧮 CalcSmart</a>
+<a href="https://rorojiao.github.io/healthcalc/" rel="noopener" style="display:inline-block;padding:6px 12px;background:#f5f5f5;border-radius:16px;text-decoration:none;color:#333;font-size:13px;" target="_blank">💪 HealthCalc</a> </div>
 </div>
 <!-- internal-links-end -->
 <!-- Analytics -->
 <script>
 (function(){var s=location.hostname,p=location.pathname;new Image().src="https://site-analytics.cap.1ktower.com/hit?s="+encodeURIComponent(s)+"&p="+encodeURIComponent(p)+"&t="+Date.now();})()
 </script>
-
 <!-- AdSense 响应式广告 -->
 <div style="text-align:center;margin:20px auto;max-width:970px;">
-  <ins class="adsbygoogle"
-       style="display:block"
-       data-ad-client="ca-pub-8346383990981353"
-       data-ad-slot="8614279503"
-       data-ad-format="auto"
-       data-full-width-responsive="true"></ins>
-  <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+<ins class="adsbygoogle" data-ad-client="ca-pub-8346383990981353" data-ad-format="auto" data-ad-slot="8614279503" data-full-width-responsive="true" style="display:block"></ins>
+<script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
 </div>
-
 <!-- FAQ Section -->
 <section style="max-width:860px;margin:3rem auto;padding:0 1rem;">
-  <h2 style="font-size:1.4rem;font-weight:800;margin-bottom:1.2rem;">Frequently Asked Questions</h2>
-  <details>
-    <summary>What color tools does ColorPick offer?</summary>
-    <p>ColorPick offers a complete suite of free online color tools: a color picker with HEX/RGB/HSL support, palette generator, WCAG contrast checker, color mixer, shades generator, HEX/RGB/HSL converter, and color blindness simulator.</p>
-  </details>
-  <details>
-    <summary>Is ColorPick free to use?</summary>
-    <p>Yes, all tools on ColorPick are completely free to use with no sign-up or registration required. Simply open any tool and start working with colors instantly in your browser.</p>
-  </details>
-  <details>
-    <summary>Does ColorPick work on mobile devices?</summary>
-    <p>Yes, ColorPick is fully responsive and works on all devices including smartphones, tablets, and desktops. All tools are optimized for touch and mouse input across all screen sizes.</p>
-  </details>
+<h2 style="font-size:1.4rem;font-weight:800;margin-bottom:1.2rem;">Frequently Asked Questions</h2>
+<details>
+<summary>What color tools does ColorPick offer?</summary>
+<p>ColorPick offers a complete suite of free online color tools: a color picker with HEX/RGB/HSL support, palette generator, WCAG contrast checker, color mixer, shades generator, HEX/RGB/HSL converter, and color blindness simulator.</p>
+</details>
+<details>
+<summary>Is ColorPick free to use?</summary>
+<p>Yes, all tools on ColorPick are completely free to use with no sign-up or registration required. Simply open any tool and start working with colors instantly in your browser.</p>
+</details>
+<details>
+<summary>Does ColorPick work on mobile devices?</summary>
+<p>Yes, ColorPick is fully responsive and works on all devices including smartphones, tablets, and desktops. All tools are optimized for touch and mouse input across all screen sizes.</p>
+</details>
 </section>
 <style>
 details{border:1px solid rgba(255,255,255,0.1);border-radius:10px;margin-bottom:0.75rem;padding:0.9rem 1.1rem;background:var(--surface,#1e1e2e);}
@@ -245,5 +232,5 @@ details summary::-webkit-details-marker{display:none;}
 details[open] summary{color:var(--accent,#a78bfa);}
 details p{margin-top:0.7rem;color:var(--text2,#a0a0c0);line-height:1.6;font-size:0.95rem;}
 </style>
-</body>
+<section class="faq-section" style="max-width:800px;margin:40px auto;padding:20px;font-family:sans-serif"><h2>Frequently Asked Questions</h2><div class="faq-item" style="margin-bottom:16px"><h3 style="font-size:1em;margin:0 0 4px">What color formats are supported?</h3><p style="margin:0;color:#555">Supports HEX, RGB, HSL, HSV, CMYK and more color formats with instant conversion.</p></div><div class="faq-item" style="margin-bottom:16px"><h3 style="font-size:1em;margin:0 0 4px">Can I pick colors from an image?</h3><p style="margin:0;color:#555">Yes, upload an image and click any pixel to extract its exact color value.</p></div><div class="faq-item" style="margin-bottom:16px"><h3 style="font-size:1em;margin:0 0 4px">Is the color picker free?</h3><p style="margin:0;color:#555">Yes, completely free with no ads on core features.</p></div></section></body>
 </html>

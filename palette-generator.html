@@ -1,21 +1,22 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AI Color Palette Generator - Create Beautiful Palettes Free | ColorPick</title>
-  <meta name="description" content="Generate beautiful color palettes from any base color. Complementary, analogous, triadic and split-complementary color schemes with one click. Free online tool.">
-  <link rel="canonical" href="https://rorojiao.github.io/colorpick/palette-generator.html">
-  <meta property="og:title" content="AI Color Palette Generator - Create Beautiful Palettes Free | ColorPick">
-  <meta property="og:description" content="Generate beautiful color palettes from any base color. Complementary, analogous, triadic and split-complementary color schemes with one click. Free online tool.">
-  <meta property="og:url" content="https://rorojiao.github.io/colorpick/palette-generator.html">
-  <meta property="og:type" content="website">
-  <meta property="og:image" content="https://rorojiao.github.io/colorpick/og-image.svg">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="AI Color Palette Generator - Create Beautiful Palettes Free | ColorPick">
-  <meta name="twitter:description" content="Generate beautiful color palettes from any base color. Complementary, analogous, triadic and split-complementary color schemes with one click. Free online tool.">
-  <meta name="twitter:image" content="https://rorojiao.github.io/colorpick/og-image.svg">
-  <script type="application/ld+json">
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>AI Color Palette Generator - Create Beautiful Palettes Free | ColorPick</title>
+<meta content="Generate beautiful color palettes from any base color. Complementary, analogous, triadic and split-complementary color schemes with one click. Free online tool." name="description"/>
+<link href="https://rorojiao.github.io/colorpick/palette-generator.html" rel="canonical"/>
+<meta content="AI Color Palette Generator - Create Beautiful Palettes Free | ColorPick" property="og:title"/>
+<meta content="Generate beautiful color palettes from any base color. Complementary, analogous, triadic and split-complementary color schemes with one click. Free online tool." property="og:description"/>
+<meta content="https://rorojiao.github.io/colorpick/palette-generator.html" property="og:url"/>
+<meta content="website" property="og:type"/>
+<meta content="https://rorojiao.github.io/colorpick/og-image.svg" property="og:image"/>
+<meta content="summary_large_image" name="twitter:card"/>
+<meta content="AI Color Palette Generator - Create Beautiful Palettes Free | ColorPick" name="twitter:title"/>
+<meta content="Generate beautiful color palettes from any base color. Complementary, analogous, triadic and split-complementary color schemes with one click. Free online tool." name="twitter:description"/>
+<meta content="https://rorojiao.github.io/colorpick/og-image.svg" name="twitter:image"/>
+<script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "SoftwareApplication",
@@ -28,7 +29,7 @@
     "provider": { "@type": "Organization", "name": "ColorPick", "url": "https://rorojiao.github.io/colorpick/" }
   }
   </script>
-  <script type="application/ld+json">
+<script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "FAQPage",
@@ -60,7 +61,7 @@
     ]
   }
   </script>
-  <script type="application/ld+json">
+<script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
@@ -80,9 +81,9 @@
     ]
   }
   </script>
-  <link rel="stylesheet" href="style.css">
-  <script src="colorpick.js"></script>
-  <style>
+<link href="style.css" rel="stylesheet"/>
+<script src="colorpick.js"></script>
+<style>
     .palette-controls { display:flex; flex-wrap:wrap; gap:1rem; align-items:center; justify-content:center; margin-bottom:2rem; }
     .palette-controls input[type="color"] { width:60px; height:48px; border-radius:12px; cursor:pointer; padding:2px; }
     .palette-controls input[type="text"] { width:120px; text-align:center; }
@@ -101,49 +102,44 @@
     .bg-transition { transition:background-color 0.6s ease; }
     @media(max-width:768px) { .p-swatch { width:100px; height:140px; } }
   </style>
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8346383990981353" crossorigin="anonymous"></script>
+<script async="" crossorigin="anonymous" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8346383990981353"></script>
 <script>
   (adsbygoogle = window.adsbygoogle || []).push({
     google_ad_client: "ca-pub-8346383990981353",
     enable_page_level_ads: true
   });
 </script>
-</head>
+<meta content="ColorPick" property="og:site_name"/></head>
 <body class="bg-transition">
-  <div id="nav"></div>
-  <div class="container" style="padding-top:2rem;">
-    <h1 class="section-title" style="background:var(--gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent;">AI Palette Generator</h1>
-    <p style="text-align:center;color:var(--text2);margin-bottom:2rem;">Pick a base color and generate harmonious palettes</p>
-
-    <div class="palette-controls">
-      <input type="color" id="baseColor" value="#7c3aed">
-      <input type="text" id="baseHex" value="#7c3aed" maxlength="7" placeholder="#hex">
-      <button class="btn btn-primary" onclick="generate()">🎲 Generate</button>
-    </div>
-
-    <div class="scheme-tabs" id="schemeTabs"></div>
-    <div class="palette-display" id="paletteDisplay"></div>
-
-    <div style="text-align:center;color:var(--text2);font-size:0.9rem;margin-top:1rem;">
+<div id="nav"></div>
+<div class="container" style="padding-top:2rem;">
+<h1 class="section-title" style="background:var(--gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent;">AI Palette Generator</h1>
+<p style="text-align:center;color:var(--text2);margin-bottom:2rem;">Pick a base color and generate harmonious palettes</p>
+<div class="palette-controls">
+<input id="baseColor" type="color" value="#7c3aed"/>
+<input id="baseHex" maxlength="7" placeholder="#hex" type="text" value="#7c3aed"/>
+<button class="btn btn-primary" onclick="generate()">🎲 Generate</button>
+</div>
+<div class="scheme-tabs" id="schemeTabs"></div>
+<div class="palette-display" id="paletteDisplay"></div>
+<div style="text-align:center;color:var(--text2);font-size:0.9rem;margin-top:1rem;">
       Click a swatch to copy • 🔒 Lock colors to keep them on regenerate
     </div>
-  </div>
-
-  <div style="max-width:800px;margin:3rem auto;padding:20px;text-align:center;">
-    <p style="color:var(--text2);margin-bottom:12px;">🔗 More Color Tools</p>
-    <div style="display:flex;flex-wrap:wrap;gap:8px;justify-content:center;">
-      <a href="index.html" class="tool-link">🏠 Home</a>
-      <a href="color-mixer.html" class="tool-link">🎨 Color Mixer</a>
-      <a href="shades-generator.html" class="tool-link">🌗 Shades</a>
-      <a href="hex-rgb-converter.html" class="tool-link">🔄 Converter</a>
-      <a href="contrast-checker.html" class="tool-link">🔍 Contrast</a>
-      <a href="color-blindness.html" class="tool-link">👁️ Blindness Sim</a>
-    </div>
-  </div>
-  <style>.tool-link{padding:6px 14px;background:var(--surface);border-radius:20px;color:var(--text2);font-size:14px;border:1px solid rgba(255,255,255,0.05);transition:all 0.2s;}.tool-link:hover{border-color:var(--accent);color:var(--text);}</style>
-
-  <div id="footer"></div>
-  <script>
+</div>
+<div style="max-width:800px;margin:3rem auto;padding:20px;text-align:center;">
+<p style="color:var(--text2);margin-bottom:12px;">🔗 More Color Tools</p>
+<div style="display:flex;flex-wrap:wrap;gap:8px;justify-content:center;">
+<a class="tool-link" href="index.html">🏠 Home</a>
+<a class="tool-link" href="color-mixer.html">🎨 Color Mixer</a>
+<a class="tool-link" href="shades-generator.html">🌗 Shades</a>
+<a class="tool-link" href="hex-rgb-converter.html">🔄 Converter</a>
+<a class="tool-link" href="contrast-checker.html">🔍 Contrast</a>
+<a class="tool-link" href="color-blindness.html">👁️ Blindness Sim</a>
+</div>
+</div>
+<style>.tool-link{padding:6px 14px;background:var(--surface);border-radius:20px;color:var(--text2);font-size:14px;border:1px solid rgba(255,255,255,0.05);transition:all 0.2s;}.tool-link:hover{border-color:var(--accent);color:var(--text);}</style>
+<div id="footer"></div>
+<script>
     document.getElementById('nav').innerHTML = CP.nav('palette-generator.html');
     document.getElementById('footer').innerHTML = CP.footer();
 
@@ -237,33 +233,26 @@
     generate();
   </script>
 <script>(function(){var s=location.hostname,p=location.pathname;new Image().src="https://site-analytics.cap.1ktower.com/hit?s="+encodeURIComponent(s)+"&p="+encodeURIComponent(p)+"&t="+Date.now();})()</script>
-
 <!-- AdSense 响应式广告 -->
 <div style="text-align:center;margin:20px auto;max-width:970px;">
-  <ins class="adsbygoogle"
-       style="display:block"
-       data-ad-client="ca-pub-8346383990981353"
-       data-ad-slot="8614279503"
-       data-ad-format="auto"
-       data-full-width-responsive="true"></ins>
-  <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+<ins class="adsbygoogle" data-ad-client="ca-pub-8346383990981353" data-ad-format="auto" data-ad-slot="8614279503" data-full-width-responsive="true" style="display:block"></ins>
+<script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
 </div>
-
 <!-- FAQ Section -->
 <section style="max-width:860px;margin:3rem auto;padding:0 1rem;">
-  <h2 style="font-size:1.4rem;font-weight:800;margin-bottom:1.2rem;">Frequently Asked Questions</h2>
-  <details>
-    <summary>How does the AI color palette generator work?</summary>
-    <p>The palette generator uses color theory algorithms to create harmonious color schemes from your chosen base color. It analyzes hue, saturation, and lightness to generate complementary, analogous, triadic, and split-complementary palettes automatically.</p>
-  </details>
-  <details>
-    <summary>What is the difference between complementary and analogous color schemes?</summary>
-    <p>Complementary colors are opposite each other on the color wheel, creating high contrast. Analogous colors are adjacent on the wheel, creating harmonious, low-contrast palettes. Triadic schemes use three evenly spaced colors for vibrant, balanced designs.</p>
-  </details>
-  <details>
-    <summary>Can I save or export the generated color palette?</summary>
-    <p>You can click any color swatch to copy its HEX value instantly. For a full palette export, copy all HEX codes individually. Each palette URL is shareable so you can send your color selection directly to clients or teammates.</p>
-  </details>
+<h2 style="font-size:1.4rem;font-weight:800;margin-bottom:1.2rem;">Frequently Asked Questions</h2>
+<details>
+<summary>How does the AI color palette generator work?</summary>
+<p>The palette generator uses color theory algorithms to create harmonious color schemes from your chosen base color. It analyzes hue, saturation, and lightness to generate complementary, analogous, triadic, and split-complementary palettes automatically.</p>
+</details>
+<details>
+<summary>What is the difference between complementary and analogous color schemes?</summary>
+<p>Complementary colors are opposite each other on the color wheel, creating high contrast. Analogous colors are adjacent on the wheel, creating harmonious, low-contrast palettes. Triadic schemes use three evenly spaced colors for vibrant, balanced designs.</p>
+</details>
+<details>
+<summary>Can I save or export the generated color palette?</summary>
+<p>You can click any color swatch to copy its HEX value instantly. For a full palette export, copy all HEX codes individually. Each palette URL is shareable so you can send your color selection directly to clients or teammates.</p>
+</details>
 </section>
 <style>
 details{border:1px solid rgba(255,255,255,0.1);border-radius:10px;margin-bottom:0.75rem;padding:0.9rem 1.1rem;background:var(--surface,#1e1e2e);}
@@ -272,5 +261,5 @@ details summary::-webkit-details-marker{display:none;}
 details[open] summary{color:var(--accent,#a78bfa);}
 details p{margin-top:0.7rem;color:var(--text2,#a0a0c0);line-height:1.6;font-size:0.95rem;}
 </style>
-</body>
+<section class="faq-section" style="max-width:800px;margin:40px auto;padding:20px;font-family:sans-serif"><h2>Frequently Asked Questions</h2><div class="faq-item" style="margin-bottom:16px"><h3 style="font-size:1em;margin:0 0 4px">What color formats are supported?</h3><p style="margin:0;color:#555">Supports HEX, RGB, HSL, HSV, CMYK and more color formats with instant conversion.</p></div><div class="faq-item" style="margin-bottom:16px"><h3 style="font-size:1em;margin:0 0 4px">Can I pick colors from an image?</h3><p style="margin:0;color:#555">Yes, upload an image and click any pixel to extract its exact color value.</p></div><div class="faq-item" style="margin-bottom:16px"><h3 style="font-size:1em;margin:0 0 4px">Is the color picker free?</h3><p style="margin:0;color:#555">Yes, completely free with no ads on core features.</p></div></section></body>
 </html>

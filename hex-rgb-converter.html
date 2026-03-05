@@ -1,21 +1,22 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>HEX to RGB Converter - Free Color Format Converter | ColorPick</title>
-  <meta name="description" content="Convert colors between HEX, RGB, and HSL formats instantly. Live preview and one-click copy. Free online color converter tool for designers and developers.">
-  <link rel="canonical" href="https://rorojiao.github.io/colorpick/hex-rgb-converter.html">
-  <meta property="og:title" content="HEX to RGB Converter - Free Color Format Converter | ColorPick">
-  <meta property="og:description" content="Convert colors between HEX, RGB, and HSL formats instantly. Live preview and one-click copy. Free online color converter tool for designers and developers.">
-  <meta property="og:url" content="https://rorojiao.github.io/colorpick/hex-rgb-converter.html">
-  <meta property="og:type" content="website">
-  <meta property="og:image" content="https://rorojiao.github.io/colorpick/og-image.svg">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="HEX to RGB Converter - Free Color Format Converter | ColorPick">
-  <meta name="twitter:description" content="Convert colors between HEX, RGB, and HSL formats instantly. Live preview and one-click copy. Free online color converter tool for designers and developers.">
-  <meta name="twitter:image" content="https://rorojiao.github.io/colorpick/og-image.svg">
-  <script type="application/ld+json">
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>HEX to RGB Converter - Free Color Format Converter | ColorPick</title>
+<meta content="Convert colors between HEX, RGB, and HSL formats instantly. Live preview and one-click copy. Free online color converter tool for designers and developers." name="description"/>
+<link href="https://rorojiao.github.io/colorpick/hex-rgb-converter.html" rel="canonical"/>
+<meta content="HEX to RGB Converter - Free Color Format Converter | ColorPick" property="og:title"/>
+<meta content="Convert colors between HEX, RGB, and HSL formats instantly. Live preview and one-click copy. Free online color converter tool for designers and developers." property="og:description"/>
+<meta content="https://rorojiao.github.io/colorpick/hex-rgb-converter.html" property="og:url"/>
+<meta content="website" property="og:type"/>
+<meta content="https://rorojiao.github.io/colorpick/og-image.svg" property="og:image"/>
+<meta content="summary_large_image" name="twitter:card"/>
+<meta content="HEX to RGB Converter - Free Color Format Converter | ColorPick" name="twitter:title"/>
+<meta content="Convert colors between HEX, RGB, and HSL formats instantly. Live preview and one-click copy. Free online color converter tool for designers and developers." name="twitter:description"/>
+<meta content="https://rorojiao.github.io/colorpick/og-image.svg" name="twitter:image"/>
+<script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "SoftwareApplication",
@@ -28,7 +29,7 @@
     "provider": { "@type": "Organization", "name": "ColorPick", "url": "https://rorojiao.github.io/colorpick/" }
   }
   </script>
-  <script type="application/ld+json">
+<script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "FAQPage",
@@ -60,7 +61,7 @@
     ]
   }
   </script>
-  <script type="application/ld+json">
+<script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
@@ -80,9 +81,9 @@
     ]
   }
   </script>
-  <link rel="stylesheet" href="style.css">
-  <script src="colorpick.js"></script>
-  <style>
+<link href="style.css" rel="stylesheet"/>
+<script src="colorpick.js"></script>
+<style>
     .converter-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:1.5rem; max-width:900px; margin:2rem auto; }
     .format-card { background:var(--surface); border-radius:var(--radius); padding:1.5rem; border:1px solid rgba(255,255,255,0.05); }
     .format-card h3 { margin-bottom:1rem; font-size:1.1rem; }
@@ -96,68 +97,63 @@
     .bg-transition{transition:background-color 0.6s ease;}
     .tool-link{padding:6px 14px;background:var(--surface);border-radius:20px;color:var(--text2);font-size:14px;border:1px solid rgba(255,255,255,0.05);transition:all 0.2s;}.tool-link:hover{border-color:var(--accent);color:var(--text);}
   </style>
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8346383990981353" crossorigin="anonymous"></script>
+<script async="" crossorigin="anonymous" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8346383990981353"></script>
 <script>
   (adsbygoogle = window.adsbygoogle || []).push({
     google_ad_client: "ca-pub-8346383990981353",
     enable_page_level_ads: true
   });
 </script>
-</head>
+<meta content="ColorPick" property="og:site_name"/></head>
 <body class="bg-transition">
-  <div id="nav"></div>
-  <div class="container" style="padding-top:2rem;">
-    <h1 class="section-title" style="background:var(--gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent;">HEX / RGB / HSL Converter</h1>
-    <p style="text-align:center;color:var(--text2);margin-bottom:1rem;">Edit any format — the others update instantly</p>
-
-    <div class="picker-row">
-      <input type="color" id="picker" value="#7c3aed">
-      <span style="color:var(--text2);">or edit fields below</span>
-    </div>
-
-    <div class="preview-block" id="preview" onclick="copyPreview()"></div>
-
-    <div class="converter-grid">
-      <div class="format-card">
-        <h3>🎨 HEX</h3>
-        <label>Hex Value</label>
-        <input type="text" id="hexVal" value="#7c3aed" maxlength="7">
-      </div>
-      <div class="format-card">
-        <h3>🔴 RGB</h3>
-        <label>R (0-255)</label>
-        <input type="number" id="rVal" min="0" max="255" value="124">
-        <label>G (0-255)</label>
-        <input type="number" id="gVal" min="0" max="255" value="58">
-        <label>B (0-255)</label>
-        <input type="number" id="bVal" min="0" max="255" value="237">
-      </div>
-      <div class="format-card">
-        <h3>🌈 HSL</h3>
-        <label>H (0-360)</label>
-        <input type="number" id="hVal" min="0" max="360" value="262">
-        <label>S (0-100)</label>
-        <input type="number" id="sVal" min="0" max="100" value="83">
-        <label>L (0-100)</label>
-        <input type="number" id="lVal" min="0" max="100" value="58">
-      </div>
-    </div>
-  </div>
-
-  <div style="max-width:800px;margin:3rem auto;padding:20px;text-align:center;">
-    <p style="color:var(--text2);margin-bottom:12px;">🔗 More Color Tools</p>
-    <div style="display:flex;flex-wrap:wrap;gap:8px;justify-content:center;">
-      <a href="index.html" class="tool-link">🏠 Home</a>
-      <a href="palette-generator.html" class="tool-link">🧠 AI Palette</a>
-      <a href="color-mixer.html" class="tool-link">🎨 Color Mixer</a>
-      <a href="shades-generator.html" class="tool-link">🌗 Shades</a>
-      <a href="contrast-checker.html" class="tool-link">🔍 Contrast</a>
-      <a href="color-blindness.html" class="tool-link">👁️ Blindness Sim</a>
-    </div>
-  </div>
-  <div id="footer"></div>
-
-  <script>
+<div id="nav"></div>
+<div class="container" style="padding-top:2rem;">
+<h1 class="section-title" style="background:var(--gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent;">HEX / RGB / HSL Converter</h1>
+<p style="text-align:center;color:var(--text2);margin-bottom:1rem;">Edit any format — the others update instantly</p>
+<div class="picker-row">
+<input id="picker" type="color" value="#7c3aed"/>
+<span style="color:var(--text2);">or edit fields below</span>
+</div>
+<div class="preview-block" id="preview" onclick="copyPreview()"></div>
+<div class="converter-grid">
+<div class="format-card">
+<h3>🎨 HEX</h3>
+<label>Hex Value</label>
+<input id="hexVal" maxlength="7" type="text" value="#7c3aed"/>
+</div>
+<div class="format-card">
+<h3>🔴 RGB</h3>
+<label>R (0-255)</label>
+<input id="rVal" max="255" min="0" type="number" value="124"/>
+<label>G (0-255)</label>
+<input id="gVal" max="255" min="0" type="number" value="58"/>
+<label>B (0-255)</label>
+<input id="bVal" max="255" min="0" type="number" value="237"/>
+</div>
+<div class="format-card">
+<h3>🌈 HSL</h3>
+<label>H (0-360)</label>
+<input id="hVal" max="360" min="0" type="number" value="262"/>
+<label>S (0-100)</label>
+<input id="sVal" max="100" min="0" type="number" value="83"/>
+<label>L (0-100)</label>
+<input id="lVal" max="100" min="0" type="number" value="58"/>
+</div>
+</div>
+</div>
+<div style="max-width:800px;margin:3rem auto;padding:20px;text-align:center;">
+<p style="color:var(--text2);margin-bottom:12px;">🔗 More Color Tools</p>
+<div style="display:flex;flex-wrap:wrap;gap:8px;justify-content:center;">
+<a class="tool-link" href="index.html">🏠 Home</a>
+<a class="tool-link" href="palette-generator.html">🧠 AI Palette</a>
+<a class="tool-link" href="color-mixer.html">🎨 Color Mixer</a>
+<a class="tool-link" href="shades-generator.html">🌗 Shades</a>
+<a class="tool-link" href="contrast-checker.html">🔍 Contrast</a>
+<a class="tool-link" href="color-blindness.html">👁️ Blindness Sim</a>
+</div>
+</div>
+<div id="footer"></div>
+<script>
     document.getElementById('nav').innerHTML = CP.nav('hex-rgb-converter.html');
     document.getElementById('footer').innerHTML = CP.footer();
 
@@ -238,33 +234,26 @@
     updateFrom('hex');
   </script>
 <script>(function(){var s=location.hostname,p=location.pathname;new Image().src="https://site-analytics.cap.1ktower.com/hit?s="+encodeURIComponent(s)+"&p="+encodeURIComponent(p)+"&t="+Date.now();})()</script>
-
 <!-- AdSense 响应式广告 -->
 <div style="text-align:center;margin:20px auto;max-width:970px;">
-  <ins class="adsbygoogle"
-       style="display:block"
-       data-ad-client="ca-pub-8346383990981353"
-       data-ad-slot="8614279503"
-       data-ad-format="auto"
-       data-full-width-responsive="true"></ins>
-  <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+<ins class="adsbygoogle" data-ad-client="ca-pub-8346383990981353" data-ad-format="auto" data-ad-slot="8614279503" data-full-width-responsive="true" style="display:block"></ins>
+<script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
 </div>
-
 <!-- FAQ Section -->
 <section style="max-width:860px;margin:3rem auto;padding:0 1rem;">
-  <h2 style="font-size:1.4rem;font-weight:800;margin-bottom:1.2rem;">Frequently Asked Questions</h2>
-  <details>
-    <summary>How do I convert a HEX color to RGB?</summary>
-    <p>Enter your HEX color code (e.g., #FF5733) in the HEX input field and the tool instantly converts it to RGB and HSL values. You can also enter an RGB value to get the HEX equivalent. All conversions happen in real-time as you type.</p>
-  </details>
-  <details>
-    <summary>What is the difference between HEX, RGB, and HSL color formats?</summary>
-    <p>HEX is a 6-digit hexadecimal code used in web design (e.g., #FF5733). RGB uses red, green, blue values from 0-255. HSL uses hue (0-360°), saturation (0-100%), and lightness (0-100%), which is more intuitive for adjusting color properties.</p>
-  </details>
-  <details>
-    <summary>Can I convert RGBA or HSLA colors with alpha transparency?</summary>
-    <p>Yes, the converter supports RGBA and HSLA formats with alpha transparency values. Enter your color with an alpha channel and the tool will display all format equivalents including the opacity value, making it easy to work with transparent colors.</p>
-  </details>
+<h2 style="font-size:1.4rem;font-weight:800;margin-bottom:1.2rem;">Frequently Asked Questions</h2>
+<details>
+<summary>How do I convert a HEX color to RGB?</summary>
+<p>Enter your HEX color code (e.g., #FF5733) in the HEX input field and the tool instantly converts it to RGB and HSL values. You can also enter an RGB value to get the HEX equivalent. All conversions happen in real-time as you type.</p>
+</details>
+<details>
+<summary>What is the difference between HEX, RGB, and HSL color formats?</summary>
+<p>HEX is a 6-digit hexadecimal code used in web design (e.g., #FF5733). RGB uses red, green, blue values from 0-255. HSL uses hue (0-360°), saturation (0-100%), and lightness (0-100%), which is more intuitive for adjusting color properties.</p>
+</details>
+<details>
+<summary>Can I convert RGBA or HSLA colors with alpha transparency?</summary>
+<p>Yes, the converter supports RGBA and HSLA formats with alpha transparency values. Enter your color with an alpha channel and the tool will display all format equivalents including the opacity value, making it easy to work with transparent colors.</p>
+</details>
 </section>
 <style>
 details{border:1px solid rgba(255,255,255,0.1);border-radius:10px;margin-bottom:0.75rem;padding:0.9rem 1.1rem;background:var(--surface,#1e1e2e);}
@@ -273,5 +262,5 @@ details summary::-webkit-details-marker{display:none;}
 details[open] summary{color:var(--accent,#a78bfa);}
 details p{margin-top:0.7rem;color:var(--text2,#a0a0c0);line-height:1.6;font-size:0.95rem;}
 </style>
-</body>
+<section class="faq-section" style="max-width:800px;margin:40px auto;padding:20px;font-family:sans-serif"><h2>Frequently Asked Questions</h2><div class="faq-item" style="margin-bottom:16px"><h3 style="font-size:1em;margin:0 0 4px">What color formats are supported?</h3><p style="margin:0;color:#555">Supports HEX, RGB, HSL, HSV, CMYK and more color formats with instant conversion.</p></div><div class="faq-item" style="margin-bottom:16px"><h3 style="font-size:1em;margin:0 0 4px">Can I pick colors from an image?</h3><p style="margin:0;color:#555">Yes, upload an image and click any pixel to extract its exact color value.</p></div><div class="faq-item" style="margin-bottom:16px"><h3 style="font-size:1em;margin:0 0 4px">Is the color picker free?</h3><p style="margin:0;color:#555">Yes, completely free with no ads on core features.</p></div></section></body>
 </html>

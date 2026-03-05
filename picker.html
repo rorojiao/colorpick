@@ -1,21 +1,22 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Color Picker Online - Free HEX, RGB & HSL Picker | ColorPick</title>
-  <meta name="description" content="Pick any color online with our free color picker. Supports HEX, RGB, and HSL formats with real-time preview and one-click copy. Perfect for designers and developers.">
-  <link rel="canonical" href="https://rorojiao.github.io/colorpick/picker.html">
-  <meta property="og:title" content="Color Picker Online - Free HEX, RGB & HSL Picker | ColorPick">
-  <meta property="og:description" content="Pick any color online with our free color picker. Supports HEX, RGB, and HSL formats with real-time preview and one-click copy. Perfect for designers and developers.">
-  <meta property="og:url" content="https://rorojiao.github.io/colorpick/picker.html">
-  <meta property="og:type" content="website">
-  <meta property="og:image" content="https://rorojiao.github.io/colorpick/og-image.svg">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Color Picker Online - Free HEX, RGB & HSL Picker | ColorPick">
-  <meta name="twitter:description" content="Pick any color online with our free color picker. Supports HEX, RGB, and HSL formats with real-time preview and one-click copy. Perfect for designers and developers.">
-  <meta name="twitter:image" content="https://rorojiao.github.io/colorpick/og-image.svg">
-  <script type="application/ld+json">
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Color Picker Online - Free HEX, RGB &amp; HSL Picker | ColorPick</title>
+<meta content="Pick any color online with our free color picker. Supports HEX, RGB, and HSL formats with real-time preview and one-click copy. Perfect for designers and developers." name="description"/>
+<link href="https://rorojiao.github.io/colorpick/picker.html" rel="canonical"/>
+<meta content="Color Picker Online - Free HEX, RGB &amp; HSL Picker | ColorPick" property="og:title"/>
+<meta content="Pick any color online with our free color picker. Supports HEX, RGB, and HSL formats with real-time preview and one-click copy. Perfect for designers and developers." property="og:description"/>
+<meta content="https://rorojiao.github.io/colorpick/picker.html" property="og:url"/>
+<meta content="website" property="og:type"/>
+<meta content="https://rorojiao.github.io/colorpick/og-image.svg" property="og:image"/>
+<meta content="summary_large_image" name="twitter:card"/>
+<meta content="Color Picker Online - Free HEX, RGB &amp; HSL Picker | ColorPick" name="twitter:title"/>
+<meta content="Pick any color online with our free color picker. Supports HEX, RGB, and HSL formats with real-time preview and one-click copy. Perfect for designers and developers." name="twitter:description"/>
+<meta content="https://rorojiao.github.io/colorpick/og-image.svg" name="twitter:image"/>
+<script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "SoftwareApplication",
@@ -28,7 +29,7 @@
     "provider": { "@type": "Organization", "name": "ColorPick", "url": "https://rorojiao.github.io/colorpick/" }
   }
   </script>
-  <script type="application/ld+json">
+<script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "FAQPage",
@@ -60,7 +61,7 @@
     ]
   }
   </script>
-  <script type="application/ld+json">
+<script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
@@ -80,9 +81,9 @@
     ]
   }
   </script>
-  <link rel="stylesheet" href="style.css">
-  <script src="colorpick.js"></script>
-  <style>
+<link href="style.css" rel="stylesheet"/>
+<script src="colorpick.js"></script>
+<style>
     .picker-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 2rem; }
     .wheel-wrap { position: relative; width: 300px; height: 300px; margin: 0 auto; }
     .wheel-canvas { border-radius: 50%; cursor: crosshair; }
@@ -103,46 +104,43 @@
     .value-row input { flex: 1; text-align: center; font-weight: 700; font-size: 1.1rem; }
     @media (max-width: 768px) { .picker-layout { grid-template-columns: 1fr; } }
   </style>
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8346383990981353" crossorigin="anonymous"></script>
+<script async="" crossorigin="anonymous" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8346383990981353"></script>
 <script>
   (adsbygoogle = window.adsbygoogle || []).push({
     google_ad_client: "ca-pub-8346383990981353",
     enable_page_level_ads: true
   });
 </script>
-</head>
+<meta content="ColorPick" property="og:site_name"/></head>
 <body>
-  <div id="nav"></div>
-  <div class="container">
-    <h1 class="section-title" style="margin-top:2rem">Color Picker</h1>
-
-    <div class="tabs">
-      <button class="tab active" onclick="setMode('hsl')">HSL</button>
-      <button class="tab" onclick="setMode('rgb')">RGB</button>
-      <button class="tab" onclick="setMode('hex')">HEX</button>
-    </div>
-
-    <div class="picker-layout">
-      <div class="card">
-        <div class="wheel-wrap">
-          <canvas class="wheel-canvas" id="wheel" width="300" height="300"></canvas>
-          <div class="wheel-cursor" id="cursor"></div>
-        </div>
-        <div class="sliders" id="sliders"></div>
-      </div>
-      <div class="card">
-        <div class="preview-box" id="preview" onclick="CP.copy(currentHex)"></div>
-        <div class="value-row">
-          <input type="text" id="hexInput" value="#7c3aed" oninput="fromHex(this.value)">
-          <button class="btn btn-secondary" onclick="CP.copy(currentHex)">📋 Copy</button>
-        </div>
-        <div id="values" style="margin-top:1rem;color:var(--text2);font-size:0.9rem"></div>
-      </div>
-    </div>
-  </div>
-  <div id="footer"></div>
-
-  <script>
+<div id="nav"></div>
+<div class="container">
+<h1 class="section-title" style="margin-top:2rem">Color Picker</h1>
+<div class="tabs">
+<button class="tab active" onclick="setMode('hsl')">HSL</button>
+<button class="tab" onclick="setMode('rgb')">RGB</button>
+<button class="tab" onclick="setMode('hex')">HEX</button>
+</div>
+<div class="picker-layout">
+<div class="card">
+<div class="wheel-wrap">
+<canvas class="wheel-canvas" height="300" id="wheel" width="300"></canvas>
+<div class="wheel-cursor" id="cursor"></div>
+</div>
+<div class="sliders" id="sliders"></div>
+</div>
+<div class="card">
+<div class="preview-box" id="preview" onclick="CP.copy(currentHex)"></div>
+<div class="value-row">
+<input id="hexInput" oninput="fromHex(this.value)" type="text" value="#7c3aed"/>
+<button class="btn btn-secondary" onclick="CP.copy(currentHex)">📋 Copy</button>
+</div>
+<div id="values" style="margin-top:1rem;color:var(--text2);font-size:0.9rem"></div>
+</div>
+</div>
+</div>
+<div id="footer"></div>
+<script>
     document.getElementById('nav').innerHTML = CP.nav('picker.html');
     document.getElementById('footer').innerHTML = CP.footer();
 
@@ -260,61 +258,53 @@
   </script>
 <!-- AADS Crypto Ad -->
 <div id="aads-ad" style="text-align:center;margin:20px auto;max-width:728px;">
-  <!-- Ad unit will be inserted after AADS registration -->
-
-  <iframe data-aa="2427662" src="//acceptable.a-ads.com/2427662/?size=Adaptive" style="border:0; padding:0; width:100%; height:auto; min-height:60px; overflow:hidden; display:block; margin:auto;"></iframe>
+<!-- Ad unit will be inserted after AADS registration -->
+<iframe data-aa="2427662" src="//acceptable.a-ads.com/2427662/?size=Adaptive" style="border:0; padding:0; width:100%; height:auto; min-height:60px; overflow:hidden; display:block; margin:auto;"></iframe>
 </div>
 <div class="tip-jar" style="text-align:center;margin:2rem auto;padding:1.5rem;background:#f8f9fa;border-radius:12px;max-width:480px">
-      <h3>☕ Support Us</h3>
-      <p>If you find this useful, consider a small tip!</p>
-      <div style="margin:0.5rem 0"><span style="margin:0 4px;padding:2px 8px;background:#e3e8ef;border-radius:4px;font-size:0.85rem">ETH</span><span style="margin:0 4px;padding:2px 8px;background:#e3e8ef;border-radius:4px;font-size:0.85rem">USDC</span><span style="margin:0 4px;padding:2px 8px;background:#e3e8ef;border-radius:4px;font-size:0.85rem">BSC</span><span style="margin:0 4px;padding:2px 8px;background:#e3e8ef;border-radius:4px;font-size:0.85rem">Polygon</span></div>
-      <div style="word-break:break-all;background:#fff;padding:0.75rem;border-radius:8px;font-family:monospace;font-size:0.8rem;cursor:pointer;border:1px solid #ddd" onclick="navigator.clipboard.writeText('0xEeD903787Cb86bcCc17777E5C7d10A4c2De43823').then(()=>this.textContent='✓ Copied!')">0xEeD903787Cb86bcCc17777E5C7d10A4c2De43823</div>
-    </div>
+<h3>☕ Support Us</h3>
+<p>If you find this useful, consider a small tip!</p>
+<div style="margin:0.5rem 0"><span style="margin:0 4px;padding:2px 8px;background:#e3e8ef;border-radius:4px;font-size:0.85rem">ETH</span><span style="margin:0 4px;padding:2px 8px;background:#e3e8ef;border-radius:4px;font-size:0.85rem">USDC</span><span style="margin:0 4px;padding:2px 8px;background:#e3e8ef;border-radius:4px;font-size:0.85rem">BSC</span><span style="margin:0 4px;padding:2px 8px;background:#e3e8ef;border-radius:4px;font-size:0.85rem">Polygon</span></div>
+<div onclick="navigator.clipboard.writeText('0xEeD903787Cb86bcCc17777E5C7d10A4c2De43823').then(()=&gt;this.textContent='✓ Copied!')" style="word-break:break-all;background:#fff;padding:0.75rem;border-radius:8px;font-family:monospace;font-size:0.8rem;cursor:pointer;border:1px solid #ddd">0xEeD903787Cb86bcCc17777E5C7d10A4c2De43823</div>
+</div>
 <!-- internal-links-start -->
 <div style="max-width:800px;margin:40px auto;padding:20px;text-align:center;border-top:1px solid #eee;">
-  <p style="font-size:14px;color:#666;margin-bottom:12px;">🔗 More Free Tools</p>
-  <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:8px;">
-    <a href="https://rorojiao.github.io/devtoolbox/" target="_blank" rel="noopener" style="display:inline-block;padding:6px 12px;background:#f5f5f5;border-radius:16px;text-decoration:none;color:#333;font-size:13px;">🛠️ DevToolBox</a>
-    <a href="https://rorojiao.github.io/seolite/" target="_blank" rel="noopener" style="display:inline-block;padding:6px 12px;background:#f5f5f5;border-radius:16px;text-decoration:none;color:#333;font-size:13px;">📊 SEOLite</a>
-    <a href="https://rorojiao.github.io/texttoolkit/" target="_blank" rel="noopener" style="display:inline-block;padding:6px 12px;background:#f5f5f5;border-radius:16px;text-decoration:none;color:#333;font-size:13px;">📝 TextToolKit</a>
-    <a href="https://rorojiao.github.io/qrcraft/" target="_blank" rel="noopener" style="display:inline-block;padding:6px 12px;background:#f5f5f5;border-radius:16px;text-decoration:none;color:#333;font-size:13px;">📱 QRCraft</a>
-    <a href="https://rorojiao.github.io/passwordfort/" target="_blank" rel="noopener" style="display:inline-block;padding:6px 12px;background:#f5f5f5;border-radius:16px;text-decoration:none;color:#333;font-size:13px;">🔐 PasswordFort</a>
-    <a href="https://rorojiao.github.io/mysticfate/" target="_blank" rel="noopener" style="display:inline-block;padding:6px 12px;background:#f5f5f5;border-radius:16px;text-decoration:none;color:#333;font-size:13px;">🌙 MysticFate</a>
-    <a href="https://rorojiao.github.io/calcsmart/" target="_blank" rel="noopener" style="display:inline-block;padding:6px 12px;background:#f5f5f5;border-radius:16px;text-decoration:none;color:#333;font-size:13px;">🧮 CalcSmart</a>
-    <a href="https://rorojiao.github.io/healthcalc/" target="_blank" rel="noopener" style="display:inline-block;padding:6px 12px;background:#f5f5f5;border-radius:16px;text-decoration:none;color:#333;font-size:13px;">💪 HealthCalc</a>  </div>
+<p style="font-size:14px;color:#666;margin-bottom:12px;">🔗 More Free Tools</p>
+<div style="display:flex;flex-wrap:wrap;justify-content:center;gap:8px;">
+<a href="https://rorojiao.github.io/devtoolbox/" rel="noopener" style="display:inline-block;padding:6px 12px;background:#f5f5f5;border-radius:16px;text-decoration:none;color:#333;font-size:13px;" target="_blank">🛠️ DevToolBox</a>
+<a href="https://rorojiao.github.io/seolite/" rel="noopener" style="display:inline-block;padding:6px 12px;background:#f5f5f5;border-radius:16px;text-decoration:none;color:#333;font-size:13px;" target="_blank">📊 SEOLite</a>
+<a href="https://rorojiao.github.io/texttoolkit/" rel="noopener" style="display:inline-block;padding:6px 12px;background:#f5f5f5;border-radius:16px;text-decoration:none;color:#333;font-size:13px;" target="_blank">📝 TextToolKit</a>
+<a href="https://rorojiao.github.io/qrcraft/" rel="noopener" style="display:inline-block;padding:6px 12px;background:#f5f5f5;border-radius:16px;text-decoration:none;color:#333;font-size:13px;" target="_blank">📱 QRCraft</a>
+<a href="https://rorojiao.github.io/passwordfort/" rel="noopener" style="display:inline-block;padding:6px 12px;background:#f5f5f5;border-radius:16px;text-decoration:none;color:#333;font-size:13px;" target="_blank">🔐 PasswordFort</a>
+<a href="https://rorojiao.github.io/mysticfate/" rel="noopener" style="display:inline-block;padding:6px 12px;background:#f5f5f5;border-radius:16px;text-decoration:none;color:#333;font-size:13px;" target="_blank">🌙 MysticFate</a>
+<a href="https://rorojiao.github.io/calcsmart/" rel="noopener" style="display:inline-block;padding:6px 12px;background:#f5f5f5;border-radius:16px;text-decoration:none;color:#333;font-size:13px;" target="_blank">🧮 CalcSmart</a>
+<a href="https://rorojiao.github.io/healthcalc/" rel="noopener" style="display:inline-block;padding:6px 12px;background:#f5f5f5;border-radius:16px;text-decoration:none;color:#333;font-size:13px;" target="_blank">💪 HealthCalc</a> </div>
 </div>
 <!-- internal-links-end -->
 <!-- Analytics -->
 <script>
 (function(){var s=location.hostname,p=location.pathname;new Image().src="https://site-analytics.cap.1ktower.com/hit?s="+encodeURIComponent(s)+"&p="+encodeURIComponent(p)+"&t="+Date.now();})()
 </script>
-
 <!-- AdSense 响应式广告 -->
 <div style="text-align:center;margin:20px auto;max-width:970px;">
-  <ins class="adsbygoogle"
-       style="display:block"
-       data-ad-client="ca-pub-8346383990981353"
-       data-ad-slot="8614279503"
-       data-ad-format="auto"
-       data-full-width-responsive="true"></ins>
-  <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+<ins class="adsbygoogle" data-ad-client="ca-pub-8346383990981353" data-ad-format="auto" data-ad-slot="8614279503" data-full-width-responsive="true" style="display:block"></ins>
+<script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
 </div>
-
 <!-- FAQ Section -->
 <section style="max-width:860px;margin:3rem auto;padding:0 1rem;">
-  <h2 style="font-size:1.4rem;font-weight:800;margin-bottom:1.2rem;">Frequently Asked Questions</h2>
-  <details>
-    <summary>What color formats does this color picker support?</summary>
-    <p>The ColorPick color picker supports HEX, RGB, and HSL color formats. You can switch between formats instantly and copy any value with a single click.</p>
-  </details>
-  <details>
-    <summary>Can I pick a color using a color wheel?</summary>
-    <p>Yes, the color picker features an interactive color wheel that lets you visually select any hue. Drag the cursor around the wheel to choose your color, then adjust lightness and saturation with sliders.</p>
-  </details>
-  <details>
-    <summary>How do I copy a color value from the picker?</summary>
-    <p>Click the color value input field or the copy button next to any format (HEX, RGB, HSL) to instantly copy it to your clipboard. A confirmation message will appear when the copy is successful.</p>
-  </details>
+<h2 style="font-size:1.4rem;font-weight:800;margin-bottom:1.2rem;">Frequently Asked Questions</h2>
+<details>
+<summary>What color formats does this color picker support?</summary>
+<p>The ColorPick color picker supports HEX, RGB, and HSL color formats. You can switch between formats instantly and copy any value with a single click.</p>
+</details>
+<details>
+<summary>Can I pick a color using a color wheel?</summary>
+<p>Yes, the color picker features an interactive color wheel that lets you visually select any hue. Drag the cursor around the wheel to choose your color, then adjust lightness and saturation with sliders.</p>
+</details>
+<details>
+<summary>How do I copy a color value from the picker?</summary>
+<p>Click the color value input field or the copy button next to any format (HEX, RGB, HSL) to instantly copy it to your clipboard. A confirmation message will appear when the copy is successful.</p>
+</details>
 </section>
 <style>
 details{border:1px solid rgba(255,255,255,0.1);border-radius:10px;margin-bottom:0.75rem;padding:0.9rem 1.1rem;background:var(--surface,#1e1e2e);}
@@ -323,5 +313,5 @@ details summary::-webkit-details-marker{display:none;}
 details[open] summary{color:var(--accent,#a78bfa);}
 details p{margin-top:0.7rem;color:var(--text2,#a0a0c0);line-height:1.6;font-size:0.95rem;}
 </style>
-</body>
+<section class="faq-section" style="max-width:800px;margin:40px auto;padding:20px;font-family:sans-serif"><h2>Frequently Asked Questions</h2><div class="faq-item" style="margin-bottom:16px"><h3 style="font-size:1em;margin:0 0 4px">What color formats are supported?</h3><p style="margin:0;color:#555">Supports HEX, RGB, HSL, HSV, CMYK and more color formats with instant conversion.</p></div><div class="faq-item" style="margin-bottom:16px"><h3 style="font-size:1em;margin:0 0 4px">Can I pick colors from an image?</h3><p style="margin:0;color:#555">Yes, upload an image and click any pixel to extract its exact color value.</p></div><div class="faq-item" style="margin-bottom:16px"><h3 style="font-size:1em;margin:0 0 4px">Is the color picker free?</h3><p style="margin:0;color:#555">Yes, completely free with no ads on core features.</p></div></section></body>
 </html>

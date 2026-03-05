@@ -1,21 +1,22 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Contrast Checker WCAG - Free Color Accessibility Tester | ColorPick</title>
-  <meta name="description" content="Check color contrast ratios for WCAG AA and AAA compliance. Test text readability against any background in real-time. Free online color accessibility tool.">
-  <link rel="canonical" href="https://rorojiao.github.io/colorpick/contrast-checker.html">
-  <meta property="og:title" content="Contrast Checker WCAG - Free Color Accessibility Tester | ColorPick">
-  <meta property="og:description" content="Check color contrast ratios for WCAG AA and AAA compliance. Test text readability against any background in real-time. Free online color accessibility tool.">
-  <meta property="og:url" content="https://rorojiao.github.io/colorpick/contrast-checker.html">
-  <meta property="og:type" content="website">
-  <meta property="og:image" content="https://rorojiao.github.io/colorpick/og-image.svg">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Contrast Checker WCAG - Free Color Accessibility Tester | ColorPick">
-  <meta name="twitter:description" content="Check color contrast ratios for WCAG AA and AAA compliance. Test text readability against any background in real-time. Free online color accessibility tool.">
-  <meta name="twitter:image" content="https://rorojiao.github.io/colorpick/og-image.svg">
-  <script type="application/ld+json">
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Contrast Checker WCAG - Free Color Accessibility Tester | ColorPick</title>
+<meta content="Check color contrast ratios for WCAG AA and AAA compliance. Test text readability against any background in real-time. Free online color accessibility tool." name="description"/>
+<link href="https://rorojiao.github.io/colorpick/contrast-checker.html" rel="canonical"/>
+<meta content="Contrast Checker WCAG - Free Color Accessibility Tester | ColorPick" property="og:title"/>
+<meta content="Check color contrast ratios for WCAG AA and AAA compliance. Test text readability against any background in real-time. Free online color accessibility tool." property="og:description"/>
+<meta content="https://rorojiao.github.io/colorpick/contrast-checker.html" property="og:url"/>
+<meta content="website" property="og:type"/>
+<meta content="https://rorojiao.github.io/colorpick/og-image.svg" property="og:image"/>
+<meta content="summary_large_image" name="twitter:card"/>
+<meta content="Contrast Checker WCAG - Free Color Accessibility Tester | ColorPick" name="twitter:title"/>
+<meta content="Check color contrast ratios for WCAG AA and AAA compliance. Test text readability against any background in real-time. Free online color accessibility tool." name="twitter:description"/>
+<meta content="https://rorojiao.github.io/colorpick/og-image.svg" name="twitter:image"/>
+<script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "SoftwareApplication",
@@ -28,7 +29,7 @@
     "provider": { "@type": "Organization", "name": "ColorPick", "url": "https://rorojiao.github.io/colorpick/" }
   }
   </script>
-  <script type="application/ld+json">
+<script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "FAQPage",
@@ -60,7 +61,7 @@
     ]
   }
   </script>
-  <script type="application/ld+json">
+<script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
@@ -80,9 +81,9 @@
     ]
   }
   </script>
-  <link rel="stylesheet" href="style.css">
-  <script src="colorpick.js"></script>
-  <style>
+<link href="style.css" rel="stylesheet"/>
+<script src="colorpick.js"></script>
+<style>
     .checker-row { display:flex; flex-wrap:wrap; gap:2rem; justify-content:center; margin:2rem 0; }
     .color-pick { display:flex; flex-direction:column; align-items:center; gap:0.5rem; }
     .color-pick input[type="color"] { width:80px; height:60px; border-radius:14px; cursor:pointer; padding:2px; }
@@ -106,63 +107,86 @@
     .bg-transition{transition:background-color 0.6s ease;}
     .tool-link{padding:6px 14px;background:var(--surface);border-radius:20px;color:var(--text2);font-size:14px;border:1px solid rgba(255,255,255,0.05);transition:all 0.2s;}.tool-link:hover{border-color:var(--accent);color:var(--text);}
   </style>
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8346383990981353" crossorigin="anonymous"></script>
+<script async="" crossorigin="anonymous" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8346383990981353"></script>
 <script>
   (adsbygoogle = window.adsbygoogle || []).push({
     google_ad_client: "ca-pub-8346383990981353",
     enable_page_level_ads: true
   });
 </script>
-</head>
+<meta content="ColorPick" property="og:site_name"/><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What color formats are supported?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Supports HEX, RGB, HSL, HSV, CMYK and more color formats with instant conversion."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I pick colors from an image?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, upload an image and click any pixel to extract its exact color value."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is the color picker free?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, completely free with no ads on core features."
+      }
+    }
+  ]
+}</script></head>
 <body class="bg-transition">
-  <div id="nav"></div>
-  <div class="container" style="padding-top:2rem;">
-    <h1 class="section-title" style="background:var(--gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent;">Contrast Checker</h1>
-    <p style="text-align:center;color:var(--text2);margin-bottom:1rem;">WCAG 2.1 contrast ratio checker for accessibility</p>
-
-    <div class="checker-row">
-      <div class="color-pick">
-        <span style="color:var(--text2);font-size:0.85rem;">Foreground</span>
-        <input type="color" id="fg" value="#ffffff">
-        <input type="text" id="fgHex" value="#ffffff" maxlength="7">
-      </div>
-      <button class="swap-btn" onclick="swapColors()" title="Swap">🔄</button>
-      <div class="color-pick">
-        <span style="color:var(--text2);font-size:0.85rem;">Background</span>
-        <input type="color" id="bg" value="#1e1e2e">
-        <input type="text" id="bgHex" value="#1e1e2e" maxlength="7">
-      </div>
-    </div>
-
-    <div class="ratio-display">
-      <div class="ratio-num" id="ratioNum">—</div>
-      <div class="ratio-label">Contrast Ratio</div>
-    </div>
-
-    <div class="wcag-grid" id="wcagGrid"></div>
-
-    <h3 style="text-align:center;margin:2rem 0 1rem;color:var(--text);">Live Preview</h3>
-    <div class="preview-box" id="previewBox">
-      <h2>Heading Text (24px Bold)</h2>
-      <p>This is normal body text at 16px. Check if it's readable against the background. Good contrast ensures accessibility for all users, including those with visual impairments.</p>
-      <p class="small-text">This is small text at 12.8px — requires higher contrast for WCAG AAA compliance.</p>
-    </div>
-  </div>
-
-  <div style="max-width:800px;margin:3rem auto;padding:20px;text-align:center;">
-    <p style="color:var(--text2);margin-bottom:12px;">🔗 More Color Tools</p>
-    <div style="display:flex;flex-wrap:wrap;gap:8px;justify-content:center;">
-      <a href="index.html" class="tool-link">🏠 Home</a>
-      <a href="palette-generator.html" class="tool-link">🧠 AI Palette</a>
-      <a href="color-mixer.html" class="tool-link">🎨 Color Mixer</a>
-      <a href="shades-generator.html" class="tool-link">🌗 Shades</a>
-      <a href="hex-rgb-converter.html" class="tool-link">🔄 Converter</a>
-      <a href="color-blindness.html" class="tool-link">👁️ Blindness Sim</a>
-    </div>
-  </div>
-  <div id="footer"></div>
-
-  <script>
+<div id="nav"></div>
+<div class="container" style="padding-top:2rem;">
+<h1 class="section-title" style="background:var(--gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent;">Contrast Checker</h1>
+<p style="text-align:center;color:var(--text2);margin-bottom:1rem;">WCAG 2.1 contrast ratio checker for accessibility</p>
+<div class="checker-row">
+<div class="color-pick">
+<span style="color:var(--text2);font-size:0.85rem;">Foreground</span>
+<input id="fg" type="color" value="#ffffff"/>
+<input id="fgHex" maxlength="7" type="text" value="#ffffff"/>
+</div>
+<button class="swap-btn" onclick="swapColors()" title="Swap">🔄</button>
+<div class="color-pick">
+<span style="color:var(--text2);font-size:0.85rem;">Background</span>
+<input id="bg" type="color" value="#1e1e2e"/>
+<input id="bgHex" maxlength="7" type="text" value="#1e1e2e"/>
+</div>
+</div>
+<div class="ratio-display">
+<div class="ratio-num" id="ratioNum">—</div>
+<div class="ratio-label">Contrast Ratio</div>
+</div>
+<div class="wcag-grid" id="wcagGrid"></div>
+<h3 style="text-align:center;margin:2rem 0 1rem;color:var(--text);">Live Preview</h3>
+<div class="preview-box" id="previewBox">
+<h2>Heading Text (24px Bold)</h2>
+<p>This is normal body text at 16px. Check if it's readable against the background. Good contrast ensures accessibility for all users, including those with visual impairments.</p>
+<p class="small-text">This is small text at 12.8px — requires higher contrast for WCAG AAA compliance.</p>
+</div>
+</div>
+<div style="max-width:800px;margin:3rem auto;padding:20px;text-align:center;">
+<p style="color:var(--text2);margin-bottom:12px;">🔗 More Color Tools</p>
+<div style="display:flex;flex-wrap:wrap;gap:8px;justify-content:center;">
+<a class="tool-link" href="index.html">🏠 Home</a>
+<a class="tool-link" href="palette-generator.html">🧠 AI Palette</a>
+<a class="tool-link" href="color-mixer.html">🎨 Color Mixer</a>
+<a class="tool-link" href="shades-generator.html">🌗 Shades</a>
+<a class="tool-link" href="hex-rgb-converter.html">🔄 Converter</a>
+<a class="tool-link" href="color-blindness.html">👁️ Blindness Sim</a>
+</div>
+</div>
+<div id="footer"></div>
+<script>
     document.getElementById('nav').innerHTML = CP.nav('contrast-checker.html');
     document.getElementById('footer').innerHTML = CP.footer();
 
@@ -216,33 +240,26 @@
     update();
   </script>
 <script>(function(){var s=location.hostname,p=location.pathname;new Image().src="https://site-analytics.cap.1ktower.com/hit?s="+encodeURIComponent(s)+"&p="+encodeURIComponent(p)+"&t="+Date.now();})()</script>
-
 <!-- AdSense 响应式广告 -->
 <div style="text-align:center;margin:20px auto;max-width:970px;">
-  <ins class="adsbygoogle"
-       style="display:block"
-       data-ad-client="ca-pub-8346383990981353"
-       data-ad-slot="8614279503"
-       data-ad-format="auto"
-       data-full-width-responsive="true"></ins>
-  <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+<ins class="adsbygoogle" data-ad-client="ca-pub-8346383990981353" data-ad-format="auto" data-ad-slot="8614279503" data-full-width-responsive="true" style="display:block"></ins>
+<script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
 </div>
-
 <!-- FAQ Section -->
 <section style="max-width:860px;margin:3rem auto;padding:0 1rem;">
-  <h2 style="font-size:1.4rem;font-weight:800;margin-bottom:1.2rem;">Frequently Asked Questions</h2>
-  <details>
-    <summary>What WCAG levels does this contrast checker test?</summary>
-    <p>This contrast checker tests both WCAG AA (minimum contrast of 4.5:1 for normal text, 3:1 for large text) and WCAG AAA (enhanced contrast of 7:1 for normal text, 4.5:1 for large text). Results are shown instantly as you adjust colors.</p>
-  </details>
-  <details>
-    <summary>What is considered "large text" in WCAG guidelines?</summary>
-    <p>WCAG defines large text as 18pt (24px) or larger for regular weight, or 14pt (approximately 18.67px) or larger for bold text. Large text has lower contrast requirements because it is inherently easier to read at bigger sizes.</p>
-  </details>
-  <details>
-    <summary>Can I test contrast for UI components?</summary>
-    <p>Yes, the contrast checker works for any foreground and background color combination, including UI components like buttons, icons, and borders. For non-text UI components, WCAG 2.1 requires a minimum contrast ratio of 3:1 against adjacent colors.</p>
-  </details>
+<h2 style="font-size:1.4rem;font-weight:800;margin-bottom:1.2rem;">Frequently Asked Questions</h2>
+<details>
+<summary>What WCAG levels does this contrast checker test?</summary>
+<p>This contrast checker tests both WCAG AA (minimum contrast of 4.5:1 for normal text, 3:1 for large text) and WCAG AAA (enhanced contrast of 7:1 for normal text, 4.5:1 for large text). Results are shown instantly as you adjust colors.</p>
+</details>
+<details>
+<summary>What is considered "large text" in WCAG guidelines?</summary>
+<p>WCAG defines large text as 18pt (24px) or larger for regular weight, or 14pt (approximately 18.67px) or larger for bold text. Large text has lower contrast requirements because it is inherently easier to read at bigger sizes.</p>
+</details>
+<details>
+<summary>Can I test contrast for UI components?</summary>
+<p>Yes, the contrast checker works for any foreground and background color combination, including UI components like buttons, icons, and borders. For non-text UI components, WCAG 2.1 requires a minimum contrast ratio of 3:1 against adjacent colors.</p>
+</details>
 </section>
 <style>
 details{border:1px solid rgba(255,255,255,0.1);border-radius:10px;margin-bottom:0.75rem;padding:0.9rem 1.1rem;background:var(--surface,#1e1e2e);}
@@ -251,5 +268,5 @@ details summary::-webkit-details-marker{display:none;}
 details[open] summary{color:var(--accent,#a78bfa);}
 details p{margin-top:0.7rem;color:var(--text2,#a0a0c0);line-height:1.6;font-size:0.95rem;}
 </style>
-</body>
+<section class="faq-section" style="max-width:800px;margin:40px auto;padding:20px;font-family:sans-serif"><h2>Frequently Asked Questions</h2><div class="faq-item" style="margin-bottom:16px"><h3 style="font-size:1em;margin:0 0 4px">What color formats are supported?</h3><p style="margin:0;color:#555">Supports HEX, RGB, HSL, HSV, CMYK and more color formats with instant conversion.</p></div><div class="faq-item" style="margin-bottom:16px"><h3 style="font-size:1em;margin:0 0 4px">Can I pick colors from an image?</h3><p style="margin:0;color:#555">Yes, upload an image and click any pixel to extract its exact color value.</p></div><div class="faq-item" style="margin-bottom:16px"><h3 style="font-size:1em;margin:0 0 4px">Is the color picker free?</h3><p style="margin:0;color:#555">Yes, completely free with no ads on core features.</p></div></section></body>
 </html>
